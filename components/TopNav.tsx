@@ -1,18 +1,34 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, GithubIcon, MoonIcon, SunIcon } from "lucide-react";
-import HamburgerMenu from "./HamburgerMenu";
-import { Button, Text } from "@/components/retroui";
+import { Button } from "@/components/retroui";
 import { navConfig } from "@/config/navigation";
 import { useTheme } from "@/contexts/ThemeContext";
 
 export default function TopNav() {
   const { isDarkMode, toggleDarkMode } = useTheme();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="sticky z-1 top-0 right-0 w-full border-b-2 bg-background">
+    <nav
+      className={`sticky z-50 w-full transition-all duration-300 ${
+        isScrolled ? "top-4" : "top-0"
+      }`}
+    >
       {/* <div className="w-full bg-black text-white">
         <div className="container max-w-6xl mx-auto px-4 py-2 flex justify-center space-x-4 items-center">
           <Text className="text-sm lg:text-center">
@@ -29,7 +45,13 @@ export default function TopNav() {
           </a>
         </div>
       </div> */}
-      <div className="container max-w-6xl px-4 lg:px-0 mx-auto">
+      <div
+        className={`container max-w-7xl mx-auto transition-all duration-300 ${
+          isScrolled
+            ? "bg-card border-2 px-6"
+            : "px-4 lg:px-0"
+        }`}
+      >
         <div className="flex justify-between items-center h-16">
           {/* Logo Section */}
           <div className="shrink-0">
@@ -61,33 +83,17 @@ export default function TopNav() {
             ))}
           </div>
 
-          <div className="flex items-center space-x-4 lg:hidden">
-            <Link
-              href="https://github.com/logging-studio/retroui"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <GithubIcon />
-            </Link>
-            <HamburgerMenu />
-          </div>
+          <div className="flex items-center space-x-3">
+            <Button variant="outline" size="sm" className="bg-card">
+              Sign In
+            </Button>
 
-          <div className="hidden lg:flex items-center space-x-3">
-            <Link
-              href="https://github.com/logging-studio/retroui"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="secondary" size="icon">
-                <GithubIcon size="14"/>
-              </Button>
-            </Link>
-            <Button variant="secondary" size="icon" onClick={toggleDarkMode}>
-              {isDarkMode ? <SunIcon size="14" /> : <MoonIcon size="14" />}
+            <Button size="sm">
+              Get Access
             </Button>
           </div>
         </div>
       </div>
-    </nav>
+    </nav >
   );
 }

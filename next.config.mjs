@@ -15,6 +15,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "cms.retroui.dev",
       },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+      },
     ],
   },
 };
