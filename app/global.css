@@ -385,12 +385,21 @@ html {
   paint-order: stroke fill;
   color: var(--card); 
 }
+.text-outline-foreground-sm {
+  -webkit-text-stroke: 4px var(--foreground);
+  paint-order: stroke fill;
+  color: var(--card); 
+}
 
 .text-shadow-foreground {
   letter-spacing: 2px;
   text-shadow: 6px 6px 0 var(--foreground);
 }
 
+.text-shadow-foreground-sm {
+  letter-spacing: 2px;
+  text-shadow: 4px 4px 0 var(--foreground);
+}
 /* Syntax Highlighting stuff */
 
 pre code.hljs {

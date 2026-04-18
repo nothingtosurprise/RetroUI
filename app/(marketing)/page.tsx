@@ -7,6 +7,7 @@ import {
 } from "@/components/retroui";
 import {
   ArrowRight,
+  ArrowUpRight,
   GithubIcon,
   MessageCircle,
   Star,
@@ -18,45 +19,8 @@ import { BlocksParallax } from "@/components/BlocksParallax";
 import { componentConfig } from "@/config/components";
 import Link from "next/link";
 import { blockConfig } from "@/config/blocks";
-
-const testimonials = [
-  {
-    name: "Evelyn Myers",
-    role: "UX Designer",
-    avatar: "/placeholder-avatar.png",
-    comment: "Great experience using RetroUI components in my design workflow. Highly recommended!",
-  },
-  {
-    name: "Julian Marcus",
-    role: "Frontend Developer",
-    avatar: "/placeholder-avatar.png",
-    comment: "I've integrated RetroUI components into my project, and I'm thrilled with the results.",
-  },
-  {
-    name: "Evelyn Myers",
-    role: "Product Designer",
-    avatar: "/placeholder-avatar.png",
-    comment: "RetroUI has truly elevated my design process. The components are versatile!",
-  },
-  {
-    name: "Evelyn Myers",
-    role: "Creative Lead",
-    avatar: "/placeholder-avatar.png",
-    comment: "The customization options are endless. RetroUI fits perfectly into our design system.",
-  },
-  {
-    name: "Evelyn Myers",
-    role: "Design Engineer",
-    avatar: "/placeholder-avatar.png",
-    comment: "Building with RetroUI has been a game-changer for our team's productivity.",
-  },
-  {
-    name: "Evelyn Myers",
-    role: "UI Developer",
-    avatar: "/placeholder-avatar.png",
-    comment: "Clean, modern, and easy to implement. RetroUI is now my go-to component library.",
-  },
-];
+import { templateConfig } from "@/config/templates";
+import { testimonials } from "@/config/data";
 
 const coreComponents = Object.entries(componentConfig.core)
   .filter(([_, component]) => component.cover)
@@ -324,7 +288,7 @@ export default function ReactHomepage() {
       </section>
 
       {/* Blocks Section */}
-      <section className="container max-w-7xl mx-auto px-4 py-28 space-y-14">
+      <section className="container mx-auto px-4 py-28 space-y-14">
         <div className="text-center space-y-6">
           <Text as="h2" className="uppercase">
             Build faster with 300+
@@ -363,15 +327,15 @@ export default function ReactHomepage() {
         </div>
 
         <div className="flex justify-center">
-          <Button>
+          <Button render={<Link href="/blocks" />}>
             View All Blocks <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
         </div>
       </section>
 
       {/* Ready-to-Use Templates */}
-      <section className="container max-w-[1400px] mx-auto px-4 py-16">
-        <div className="flex items-center justify-between mb-8">
+      <section className="container mx-auto px-4 py-28 space-y-14">
+        <div className="flex items-center justify-between">
           <Text as="h2" className="uppercase">
             Pre-built and Customizable
             <br />
@@ -383,33 +347,42 @@ export default function ReactHomepage() {
           <Button className="bg-primary">Explore RetroUI Pro</Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { name: "MULTIPAGE SAAS TEMPLATE", type: "Multi-page" },
-            { name: "AGENCY TEMPLATE", type: "Landing Page" },
-            { name: "DEVTOOLS TEMPLATE", type: "Dark Mode" },
-          ].map((template, index) => (
-            <Card key={index} className="bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <Card.Content className="p-0">
-                <div className="h-64 bg-gray-200 border-b-2 border-black flex items-center justify-center">
-                  <Text className="text-gray-400">Template Preview</Text>
-                </div>
-                <div className="p-4">
-                  <Text className="font-bold mb-2">{template.name}</Text>
-                  <div className="flex gap-2">
-                    <Button size="sm" variant="outline">See Demo</Button>
-                    <Button size="sm">Get Template</Button>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {templateConfig.templates.slice(0, 3).map((template) => (
+            <div key={template.name} className="shadow-none">
+              <div className="w-full h-auto relative mb-8">
+                <div className={`absolute top-2 left-2 -bottom-2 -right-2 border-2 border-border`} style={{ backgroundColor: template.color }}></div>
+                <Image
+                  src={template.cover_image}
+                  alt={template.name}
+                  width={600}
+                  height={800}
+                  className="object-contain relative z-1 border-2 border-border"
+                />
+              </div>
+
+              <div>
+                <Text as="h5" className="mb-2 font-normal">{template.name}</Text>
+                <Text className="text-sm text-muted-foreground mb-4">{template.description}</Text>
+                <div className="flex justify-between gap-6">
+                  <div className="relative inline-block group flex-1">
+                    <div className="absolute -bottom-1.5 -right-1.5 left-1.5 top-1.5 border-2 bg-primary transition-all duration-200" />
+
+                    <button className="px-4 py-1.5 font-head w-full border-2 transition-all duration-200 relative bg-card shadow-none group-hover:translate-x-1 group-hover:translate-y-1 hover:shadow-none active:translate-x-1.5 active:translate-y-1.5">
+                      View Details
+                    </button>
                   </div>
+                  <Button variant="link" className="flex-1">Live Preview <ArrowUpRight className="ml-2" /></Button>
                 </div>
-              </Card.Content>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
       </section>
 
 
       {/* Testimonials Section */}
-      <section className="container max-w-7xl mx-auto px-4 py-16">
+      <section className="container mx-auto px-4 py-28 space-y-14">
         <div className="text-center">
           <Text as="h2" className="uppercase">
             <span className="relative text-outline-foreground text-shadow-foreground">
@@ -422,48 +395,44 @@ export default function ReactHomepage() {
           </Text>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <Card.Content className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gray-300 rounded-full border-2 border-black" />
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+          {testimonials.map((testimonial) => (
+            <div key={testimonial.name} className="relative">
+              {/* <div className="absolute bg-primary top-1 left-1 -bottom-1 -right-1 border-2 border-border"></div> */}
+              <div
+                className="bg-white p-4 border-2 relative"
+              >
+                <Image src="https://pub-5f7cbdfd9ffa4c838e386788f395f0c4.r2.dev/icons/quote.svg" alt="quote" width={48} height={48} className="w-12 h-12 mb-2" />
+
+                <Text className="mb-6 leading-relaxed">{testimonial.quote}</Text>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 border-2 border-black rounded-full bg-gray-200 overflow-hidden">
+                    <img
+                      src={testimonial.avatar || "/placeholder.svg"}
+                      alt={testimonial.name}
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  </div>
                   <div>
-                    <Text className="font-bold text-sm">{testimonial.name}</Text>
-                    <Text className="text-xs text-muted-foreground">{testimonial.role}</Text>
+                    <h3 className="font-medium text-black">{testimonial.name}</h3>
+                    <p className="text-sm text-muted-foreground font-medium">{testimonial.position}</p>
                   </div>
                 </div>
-                <p className="text-sm">{testimonial.comment}</p>
-                <div className="flex gap-1 mt-4">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="w-4 h-4 fill-primary text-primary" />
-                  ))}
-                </div>
-              </Card.Content>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* Works With Section */}
-      <section className="container max-w-7xl mx-auto px-4 py-16">
-        <Text className="text-center text-sm text-muted-foreground mb-8">WORKS PERFECTLY WITH</Text>
-        <div className="flex flex-wrap justify-center items-center gap-8">
-          {["Next.js", "React", "Vite", "TailwindCSS", "shadcn/ui", "Remix", "Astro", "T3 Stack"].map((tech) => (
-            <div key={tech} className="px-6 py-3 border-2 border-black bg-white font-bold">
-              {tech}
+              </div>
             </div>
           ))}
         </div>
       </section>
 
+
       {/* Community Contributors */}
       <section className="container max-w-7xl mx-auto px-4 py-16">
         <div className="bg-white border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-12">
-          <Text as="h2" className="text-4xl lg:text-5xl font-bold mb-4">
+          <Text as="h2" className="mb-4">
             COMMUNITY
             <br />
-            <span className="text-outlined">CONTRIBUTORS</span>
+            <span className="text-outline-foreground text-shadow-foreground">CONTRIBUTORS</span>
           </Text>
 
           <div className="flex gap-4 mb-8">
@@ -478,10 +447,6 @@ export default function ReactHomepage() {
             {[...Array(20)].map((_, i) => (
               <div key={i} className="w-12 h-12 bg-gray-300 rounded-full border-2 border-black" />
             ))}
-          </div>
-
-          <div className="mt-8 h-64 bg-gray-200 border-2 border-black rounded flex items-center justify-center">
-            <Text className="text-gray-400">Community Illustration</Text>
           </div>
         </div>
       </section>
