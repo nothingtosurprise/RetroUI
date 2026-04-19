@@ -5,9 +5,12 @@ import Image from "next/image";
 import { Button } from "@/components/retroui";
 import { navConfig } from "@/config/navigation";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useAuth } from "@/contexts/AuthContext";
+import UserMenu from "@/components/UserMenu";
 
 export default function TopNav() {
   const { isDarkMode, toggleDarkMode } = useTheme();
+  const { user } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -84,13 +87,14 @@ export default function TopNav() {
           </div>
 
           <div className="flex items-center space-x-3">
-            <Button variant="outline" size="sm" className="bg-card">
-              Sign In
-            </Button>
-
-            <Button size="sm">
-              Get Access
-            </Button>
+            {user ? (
+              <UserMenu user={user} />
+            ) : (
+              <>
+                <Button variant="outline" size="sm" className="bg-card" render={<Link href="/sign-in">Sign In</Link>} />
+                <Button size="sm" render={<Link href="/pricing">Get Access</Link>} />
+              </>
+            )}
           </div>
         </div>
       </div>
