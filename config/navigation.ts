@@ -6,11 +6,17 @@ const utilsRoute = "/docs/utils";
 
 export const navConfig: INavigationConfig = {
   topNavItems: [
-    { title: "Docs", href: "/docs" },
     { title: "Components", href: componentsRoute },
+    { title: "Blocks", href: "/blocks" },
+    { title: "Templates", href: "/templates" },
     { title: "Themes", href: "/themes" },
-    { title: "Blog", href: "/blogs" },
-    { title: "Showcase", href: "/showcase" },
+    {
+      title: "Resources", href: "", children: [
+        { title: "Documentation", href: "/docs" },
+        { title: "Blog", href: "/blogs" },
+        { title: "Showcase", href: "/showcase" },
+      ]
+    },
   ],
   sideNavItems: [
     {

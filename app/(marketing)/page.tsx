@@ -8,6 +8,7 @@ import {
 import {
   ArrowRight,
   ArrowUpRight,
+  CopyIcon,
   GithubIcon,
   MessageCircle,
   Star,
@@ -80,36 +81,34 @@ export default function ReactHomepage() {
 
 
       {/* Features Section */}
-      <section className="container max-w-7xl mx-auto px-4 py-16 text-center">
-        <Text as="h2" className="uppercase">
-          <span className="relative text-outline-foreground text-shadow-foreground">
-            <Image src="/decor/pen_design.svg" alt="components decoration" width={140} height={140} className="absolute h-[140px] w-[140px] -left-18 -top-14" />
-            Desiged to Ship Fast
-          </span>
-          <br />
-          Without Looking Boring
-        </Text>
-        <p className="text-muted-foreground mb-12 max-w-4xl mx-auto text-center">
-          An ecosystem tailored for developers, featuring a reliable framework, reusable elements, and complete code control. It is crafted to enhance and sustain interfaces as products evolve.
-        </p>
+      <section className="container mx-auto px-4 py-28 space-y-14">
+        <div className="text-center space-y-6">
+          <Text as="h2" className="uppercase">
+            <span className="relative text-outline-foreground text-shadow-foreground">
+              <Image src="/decor/pen_design.svg" alt="components decoration" width={140} height={140} className="absolute h-[140px] w-[140px] -left-18 -top-14" />
+              Desiged to Ship Fast
+            </span>
+            <br />
+            Without Looking Boring
+          </Text>
+          <p className="text-muted-foreground mb-12 max-w-4xl mx-auto text-center">
+            An ecosystem tailored for developers, featuring a reliable framework, reusable elements, and complete code control. It is crafted to enhance and sustain interfaces as products evolve.
+          </p>
+        </div>
 
-        {/* First Row - Asymmetric Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-8">
-          {/* Left Card - Spans 3 columns */}
-          <div className="lg:col-span-3 relative">
-            <div className="absolute -bottom-2 -right-2 left-2 top-2 border-2 border-black bg-[#FFD93D]" />
-            <Card className="relative bg-[#FFF8E7] border-2 border-black shadow-none h-full">
-              <Card.Content className="p-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  {/* Illustration Section */}
-                  <div className="flex items-center justify-center bg-[#FFF8E7] border-2 border-black p-8">
-                    <Image src="/decor/compas.svg" alt="Design illustration" width={300} height={300} className="object-contain" />
+        <div className="space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            <div className="lg:col-span-3 relative">
+              <div className="absolute -bottom-2 -right-2 left-2 top-2 border-2 border-black bg-[#FFD93D]" />
+              <Card className="relative h-full shadow-none">
+                <div className="grid grid-cols-1 lg:grid-cols-2 divide-x-2 h-full">
+                  <div className="bg-background relative overflow-hidden">
+                    <Image src="/decor/clipboard.png" alt="Design illustration" width={450} height={450} className="object-fit h-[400px] w-auto absolute -right-14 -bottom-12" />
                   </div>
 
-                  {/* Text and CLI Section */}
-                  <div className="flex flex-col justify-between">
+                  <div className="flex flex-col justify-between p-6">
                     <div>
-                      <Text className="font-bold text-2xl mb-4">COPY-PASTE OR JUST USE YOUR CLI</Text>
+                      <Text as="h4" className="mb-4">Copy-paste or just use your CLI</Text>
                       <p className="text-sm text-muted-foreground mb-6">
                         Discover our bold neo-brutalist sections. With striking hero blocks, pricing tables, and feature grids, your product will stand out in the market.
                       </p>
@@ -117,16 +116,14 @@ export default function ReactHomepage() {
 
                     {/* Terminal Preview */}
                     <div className="relative">
-                      <div className="absolute -bottom-1.5 -right-1.5 left-1.5 top-1.5 border-2 border-black bg-[#4ECDC4]" />
-                      <div className="relative bg-white border-2 border-black p-4">
-                        <div className="flex items-center gap-2 mb-3">
-                          <div className="w-3 h-3 rounded-full bg-[#FF6B6B] border border-black"></div>
-                          <div className="w-3 h-3 rounded-full bg-[#FFD93D] border border-black"></div>
-                          <div className="w-3 h-3 rounded-full bg-[#4ECDC4] border border-black"></div>
+                      <div className="absolute -bottom-1.5 -right-1.5 left-1.5 top-1.5 border-2 border-border bg-primary" />
+                      <div className="relative bg-background border-2 border-border p-3">
+                        <div className="flex items-center gap-1.5 mb-3 pb-2 border-b-2">
+                          <div className="w-2.5 h-2.5 rounded-full bg-[#FF6B6B] border"></div>
+                          <div className="w-2.5 h-2.5 rounded-full bg-[#FFD93D] border"></div>
+                          <div className="w-2.5 h-2.5 rounded-full bg-[#4ECDC4] border"></div>
                           <div className="ml-auto">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <rect x="8" y="8" width="8" height="8" strokeWidth="2" />
-                            </svg>
+                            <CopyIcon className="w-4 h-4" />
                           </div>
                         </div>
                         <code className="text-sm font-mono">npx shadcn add @retroui/button</code>
@@ -134,96 +131,81 @@ export default function ReactHomepage() {
                     </div>
                   </div>
                 </div>
-              </Card.Content>
-            </Card>
-          </div>
+              </Card>
+            </div>
 
-          {/* Right Card - Spans 2 columns */}
-          <div className="lg:col-span-2 relative">
-            <div className="absolute -bottom-2 -right-2 left-2 top-2 border-2 border-black bg-[#FFD93D]" />
-            <Card className="relative bg-[#FFF8E7] border-2 border-black shadow-none h-full">
-              <Card.Content className="p-0">
-                {/* Illustration Section */}
-                <div className="flex items-center justify-center bg-[#FFF8E7] border-b-2 border-black p-8 min-h-[300px]">
-                  <Image src="/decor/customize.svg" alt="Customization" width={300} height={200} className="object-contain" />
+            {/* Right Card - Spans 2 columns */}
+            <div className="lg:col-span-2 relative">
+              <div className="absolute -bottom-2 -right-2 left-2 top-2 border-2 border-black bg-[#FFD93D]" />
+              <Card className="relative shadow-none h-full divide-y-2">
+                <div className="flex bg-background relative h-[250px] overflow-hidden">
+                  <Image src="/decor/customize.svg" alt="Customization" width={450} height={450} className="object-contain h-[220px] w-auto absolute -left-8 -bottom-8" />
                 </div>
 
-                {/* Text Section */}
-                <div className="p-8">
-                  <Text className="font-bold text-2xl mb-4">FULLY CUSTOMIZABLE</Text>
+                <div className="p-6">
+                  <Text as="h4" className="mb-4">Fully customizable</Text>
                   <p className="text-sm text-muted-foreground">
                     Own and modify every component. Tailwind CSS allows you to adjust colors, borders, shadows, and animations to fit your brand.
                   </p>
                 </div>
-              </Card.Content>
-            </Card>
+              </Card>
+            </div>
           </div>
-        </div>
 
-        {/* Second Row - Equal Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Tech Stack Card */}
-          <div className="relative">
-            <div className="absolute -bottom-2 -right-2 left-2 top-2 border-2 border-black bg-[#FFD93D]" />
-            <Card className="relative bg-[#FFF8E7] border-2 border-black shadow-none">
-              <Card.Content className="p-0">
-                {/* Illustration Section */}
-                <div className="flex items-center justify-center bg-[#FFF8E7] border-b-2 border-black p-8 min-h-[280px]">
-                  <Image src="/decor/techstack-hex.svg" alt="Tech stack hexagons" width={350} height={200} className="object-contain" />
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 ">
+            {/* Tech Stack Card */}
+            <div className="relative lg:col-span-2">
+              <div className="absolute -bottom-2 -right-2 left-2 top-2 border-2 border-black bg-[#FFD93D]" />
+              <Card className="relative shadow-none divide-y-2">
+                <div className="bg-background h-[250px] overflow-hidden relative">
+                  <Image src="/decor/techstack-hex.svg" alt="Tech stack hexagons" width={400} height={200} className="object-contain absolute -right-12 -bottom-12" />
                 </div>
 
-                {/* Text Section */}
-                <div className="p-8">
-                  <Text className="font-bold text-2xl mb-4">SEAMLESSLY INTEGRATE WITH YOUR FAVORITE TECH STACK</Text>
+                <div className="p-6">
+                  <Text as="h4" className="mb-4">Integrate with your favorite tech stack</Text>
                   <p className="text-sm text-muted-foreground">
                     This solution integrates smoothly with React apps using TypeScript and Tailwind CSS, adhering to Shadcn/ui patterns while offering flexibility across frameworks.
                   </p>
                 </div>
-              </Card.Content>
-            </Card>
-          </div>
+              </Card>
+            </div>
 
-          {/* MCP Server Card */}
-          <div className="relative">
-            <div className="absolute -bottom-2 -right-2 left-2 top-2 border-2 border-black bg-[#FFD93D]" />
-            <Card className="relative bg-[#FFF8E7] border-2 border-black shadow-none">
-              <Card.Content className="p-8">
-                <div className="mb-8">
-                  <Text className="font-bold text-2xl mb-4">NATIVE MCP SERVER SUPPORT</Text>
-                  <p className="text-sm text-muted-foreground mb-6">
-                    Discover our bold neo-brutalist sections. With striking hero blocks, pricing tables, and feature grids, your product will stand out in the market.
-                  </p>
-                </div>
-
-                {/* Illustration Section */}
-                <div className="flex items-center justify-center bg-[#FFF8E7] border-2 border-black p-8 mb-6 min-h-[200px]">
-                  <div className="relative w-full h-48">
-                    {/* Placeholder for MCP server illustration */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-32 h-32 border-2 border-dashed border-black rounded-full" />
-                    </div>
+            {/* MCP Server Card */}
+            <div className="relative lg:col-span-3">
+              <div className="absolute -bottom-2 -right-2 left-2 top-2 border-2 border-black bg-[#FFD93D]" />
+              <Card className="relative shadow-none h-full">
+                <div className="grid grid-cols-1 lg:grid-cols-2 divide-x-2 h-full">
+                  <div className="bg-background relative overflow-hidden">
+                    <Image src="/decor/retroui_mcp.png" alt="Design illustration" width={400} height={400} className="object-contain h-[350px] w-[350px] absolute -right-6 -bottom-0" />
                   </div>
-                </div>
 
-                {/* Terminal Preview */}
-                <div className="relative">
-                  <div className="absolute -bottom-1.5 -right-1.5 left-1.5 top-1.5 border-2 border-black bg-[#4ECDC4]" />
-                  <div className="relative bg-white border-2 border-black p-4">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="w-3 h-3 rounded-full bg-[#FF6B6B] border border-black"></div>
-                      <div className="w-3 h-3 rounded-full bg-[#FFD93D] border border-black"></div>
-                      <div className="w-3 h-3 rounded-full bg-[#4ECDC4] border border-black"></div>
-                      <div className="ml-auto">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <rect x="8" y="8" width="8" height="8" strokeWidth="2" />
-                        </svg>
+                  <div className="flex flex-col justify-between p-6">
+                    <div>
+                      <Text as="h4" className="mb-4">Native MCP server support</Text>
+                      <p className="text-sm text-muted-foreground mb-6">
+                        Discover our bold neo-brutalist sections. With striking hero blocks, pricing tables, and feature grids, your product will stand out in the market.
+                      </p>
+                    </div>
+
+                    {/* Terminal Preview */}
+                    <div className="relative">
+                      <div className="absolute -bottom-1.5 -right-1.5 left-1.5 top-1.5 border-2 border-border bg-primary" />
+                      <div className="relative bg-background border-2 border-border p-3">
+                        <div className="flex items-center gap-1.5 mb-3 pb-2 border-b-2">
+                          <div className="w-2.5 h-2.5 rounded-full bg-[#FF6B6B] border"></div>
+                          <div className="w-2.5 h-2.5 rounded-full bg-[#FFD93D] border"></div>
+                          <div className="w-2.5 h-2.5 rounded-full bg-[#4ECDC4] border"></div>
+                          <div className="ml-auto">
+                            <CopyIcon className="w-4 h-4" />
+                          </div>
+                        </div>
+                        <code className="text-sm font-mono">npx @retroui/mcp start</code>
                       </div>
                     </div>
-                    <code className="text-sm font-mono">npx @retroui/mcp start</code>
                   </div>
                 </div>
-              </Card.Content>
-            </Card>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -365,13 +347,13 @@ export default function ReactHomepage() {
                 <Text as="h5" className="mb-2 font-normal">{template.name}</Text>
                 <Text className="text-sm text-muted-foreground mb-4">{template.description}</Text>
                 <div className="flex justify-between gap-6">
-                  <div className="relative inline-block group flex-1">
+                  <Link href={`/templates/${template.slug}`} className="relative inline-block group flex-1">
                     <div className="absolute -bottom-1.5 -right-1.5 left-1.5 top-1.5 border-2 bg-primary transition-all duration-200" />
 
                     <button className="px-4 py-1.5 font-head w-full border-2 transition-all duration-200 relative bg-card shadow-none group-hover:translate-x-1 group-hover:translate-y-1 hover:shadow-none active:translate-x-1.5 active:translate-y-1.5">
                       View Details
                     </button>
-                  </div>
+                  </Link>
                   <Button variant="link" className="flex-1">Live Preview <ArrowUpRight className="ml-2" /></Button>
                 </div>
               </div>

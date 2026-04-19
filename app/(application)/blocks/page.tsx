@@ -5,7 +5,8 @@ import { Card, Text } from "@/components/retroui";
 import { Tabs } from "@/components/retroui/Tab";
 import { blockConfig } from "@/config/blocks";
 import Image from "next/image";
-import { Search, Figma, Megaphone, ListMinus, LayoutGrid } from "lucide-react";
+import { Megaphone, Search, ListMinus, LayoutGrid } from "lucide-react";
+import Link from "next/link";
 
 export default function BlocksPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -128,25 +129,27 @@ function BlocksGrid({ blocks }: { blocks: typeof blockConfig.blocks }) {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {blocks.map((block) => (
         <Card key={block.slug} className="w-full group overflow-hidden">
-          <Card.Content className="p-0">
-            <div className="w-full h-auto bg-white flex items-center justify-center border-b-2 overflow-hidden">
-              <Image
-                src={block.cover_image}
-                alt={block.name}
-                width={500}
-                height={300}
-                className="object-contain group-hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="p-6">
-              <Text as="h6" className="mb-2 uppercase">
-                {block.name}
-              </Text>
-              <p className="text-sm text-muted-foreground">
-                {block.description}
-              </p>
-            </div>
-          </Card.Content>
+          <Link href={`/blocks/${block.slug}`}>
+            <Card.Content className="p-0">
+              <div className="w-full h-auto bg-white flex items-center justify-center border-b-2 overflow-hidden">
+                <Image
+                  src={block.cover_image}
+                  alt={block.name}
+                  width={500}
+                  height={300}
+                  className="object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <Text as="h6" className="mb-2 uppercase">
+                  {block.name}
+                </Text>
+                <p className="text-sm text-muted-foreground">
+                  {block.description}
+                </p>
+              </div>
+            </Card.Content>
+          </Link>
         </Card>
       ))}
     </div>

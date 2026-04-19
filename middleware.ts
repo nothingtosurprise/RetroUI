@@ -6,7 +6,7 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Define protected routes
-  const protectedPaths = ["/blocks"];
+  const protectedPaths = ["/blocksd"];
   const isProtectedRoute = protectedPaths.some((path) =>
     pathname.startsWith(path)
   );

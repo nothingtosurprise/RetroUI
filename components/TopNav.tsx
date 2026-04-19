@@ -1,15 +1,14 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/retroui";
 import { navConfig } from "@/config/navigation";
-import { useTheme } from "@/contexts/ThemeContext";
 import { useAuth } from "@/contexts/AuthContext";
 import UserMenu from "@/components/UserMenu";
 
 export default function TopNav() {
-  const { isDarkMode, toggleDarkMode } = useTheme();
   const { user } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -28,30 +27,14 @@ export default function TopNav() {
 
   return (
     <nav
-      className={`sticky z-50 w-full transition-all duration-300 ${
+      className={`container mx-auto sticky z-50 w-full transition-all duration-300 px-4 ${
         isScrolled ? "top-4" : "top-0"
       }`}
     >
-      {/* <div className="w-full bg-black text-white">
-        <div className="container max-w-6xl mx-auto px-4 py-2 flex justify-center space-x-4 items-center">
-          <Text className="text-sm lg:text-center">
-            Ship faster with premium blocks and templates!
-          </Text>
-          <a href="https://dub.sh/retroui-pro" target="_blank">
-            <Button
-              size="sm"
-              className="shadow-none font-sans font-bold px-2 py-1 w-30"
-            >
-              RetroUI Pro
-              <ArrowUpRight className="ml-auto h-4 w-4 inline-block" />
-            </Button>
-          </a>
-        </div>
-      </div> */}
       <div
-        className={`container max-w-7xl mx-auto transition-all duration-300 ${
+        className={`transition-all duration-300 ${
           isScrolled
-            ? "bg-card border-2 px-6"
+            ? "bg-card border-2 px-6 max-w-7xl"
             : "px-4 lg:px-0"
         }`}
       >
