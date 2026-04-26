@@ -1,9 +1,7 @@
 "use client";
 
-import { Button } from "@/components/retroui/Button";
-import { Input } from "@/components/retroui/Input";
-import { Text } from "@/components/retroui/Text";
-import { Label } from "@/components/retroui/Label";
+import { Button } from "@/components/base-retroui/Button";
+import { Text } from "@/components/base-retroui/Text";
 import { Mail, TwitterIcon, Github, Figma } from "lucide-react";
 import { useState } from "react";
 import { subscribeToNewsletter } from "@/app/actions/newsletter";

@@ -1,7 +1,6 @@
-import React from "react";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
-import { Avatar, Badge, Button, Text } from "@/components/retroui";
+import { Avatar, Badge, Button, Text } from "@/components/base-retroui";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -148,9 +147,7 @@ export default async function page(props: IProps) {
 
       <hr className="my-12" />
 
-      <Button asChild aria-label="Return to all blog posts" variant="secondary">
-        <Link href="/blogs" className="inline-flex">← Back to blogs</Link>
-      </Button>
+      <Button render={() => <Link href="/blogs" className="inline-flex">← Back to blogs</Link>} aria-label="Return to all blog posts" variant="secondary" />
     </article>
   );
 }

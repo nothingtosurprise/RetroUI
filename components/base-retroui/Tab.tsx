@@ -30,7 +30,7 @@ const TabsTrigger = ({ children, className, ...props }: ITabsTrigger) => {
   return (
     <BaseTabs.Tab
       className={cn(
-        "px-4 py-1 border-2 border-transparent data-[selected]:border-border data-[selected]:bg-primary data-[selected]:text-primary-foreground data-[selected]:font-semibold focus:outline-hidden",
+        "px-4 flex items-center py-1 border-2 border-transparent data-[active]:border-border data-[active]:bg-primary data-[active]:text-primary-foreground data-[active]:font-semibold focus:outline-hidden",
         className,
       )}
       {...props}
@@ -45,13 +45,16 @@ interface ITabsContent extends React.ComponentProps<typeof BaseTabs.Panel> {
 }
 const TabsContent = ({ children, className, ...props }: ITabsContent) => {
   return (
-    <BaseTabs.Panel
-      className={cn("border-2 border-border mt-2 p-4 w-full", className)}
-      {...props}
-    >
+    <BaseTabs.Panel className={cn("mt-2 w-full", className)} {...props}>
       {children}
     </BaseTabs.Panel>
   );
 };
 
-export { Tabs, TabsPanels, TabsTrigger, TabsContent, TabsTriggerList };
+const TabsObj = Object.assign(BaseTabs.Root, {
+  List: TabsTriggerList,
+  Trigger: TabsTrigger,
+  Content: TabsContent,
+});
+
+export { TabsObj as Tabs };

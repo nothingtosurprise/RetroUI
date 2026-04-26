@@ -1,18 +1,18 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Menu as BaseMenu } from "@base-ui/react/menu";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import React, { ComponentPropsWithoutRef } from "react";
 
-const Menu = BaseMenu.Root;
-const Trigger = BaseMenu.Trigger;
+const Menu = DropdownMenu.Root;
+const Trigger = DropdownMenu.Trigger;
 
 interface IMenuContent
-  extends ComponentPropsWithoutRef<typeof BaseMenu.Popup> {}
+  extends ComponentPropsWithoutRef<typeof DropdownMenu.Content> {}
 
 const Content = ({ className, ...props }: IMenuContent) => (
-  <BaseMenu.Portal>
-    <BaseMenu.Popup
+  <DropdownMenu.Portal>
+    <DropdownMenu.Content
       side="bottom"
       align="start"
       className={cn(
@@ -21,17 +21,17 @@ const Content = ({ className, ...props }: IMenuContent) => (
       )}
       {...props}
     />
-  </BaseMenu.Portal>
+  </DropdownMenu.Portal>
 );
 
 const MenuItem = React.forwardRef<
   HTMLDivElement,
-  ComponentPropsWithoutRef<typeof BaseMenu.Item>
+  ComponentPropsWithoutRef<typeof DropdownMenu.Item>
 >(({ className, ...props }, ref) => (
-  <BaseMenu.Item
+  <DropdownMenu.Item
     ref={ref}
     className={cn(
-      "relative text-black flex cursor-default select-none items-center rounded-xs px-2 py-1.5 text-sm outline-hidden transition-colors hover:bg-primary focus:bg-primary data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "relative text-black flex cursor-default select-none items-center rounded-xs px-2 py-1.5 text-sm outline-hidden transition-colors hover:bg-primary focus:bg-primary data-disabled:pointer-events-none data-disabled:opacity-50",
       className,
     )}
     {...props}

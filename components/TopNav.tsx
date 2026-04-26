@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "@/components/retroui/Button";
+import { Button } from "@/components/base-retroui/Button";
 import {
   NavigationMenu,
   NavigationMenuList,

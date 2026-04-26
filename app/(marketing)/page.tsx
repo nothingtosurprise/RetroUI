@@ -2,9 +2,7 @@ import {
   Button,
   Text,
   Card,
-  Avatar,
-  Badge,
-} from "@/components/retroui";
+} from "@/components/base-retroui";
 import {
   ArrowRight,
   ArrowUpRight,

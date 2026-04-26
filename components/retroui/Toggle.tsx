@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Toggle as BaseToggle } from "@base-ui/react/toggle";
+import * as TogglePrimitive from "@radix-ui/react-toggle";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
@@ -12,12 +12,12 @@ const toggleVariants = cva(
         variants: {
             variant: {
                 default:
-                    "bg-transparent hover:bg-muted/70 hover:text-muted-foreground data-[pressed]:bg-muted",
+                    "bg-transparent hover:bg-muted/70 hover:text-muted-foreground data-[state=on]:bg-muted",
                 outlined:
-                    "border-2 border-input bg-transparent hover:bg-accent hover:text-accent-foreground/80 data-[pressed]:bg-accent data-[pressed]:text-accent-foreground",
-                solid: "border-2 border-input bg-transparent hover:bg-secondary hover:text-secondary-foreground hover:border-secondary data-[pressed]:bg-secondary data-[pressed]:text-secondary-foreground data-[pressed]:border-secondary",
+                    "border-2 border-input bg-transparent hover:bg-accent hover:text-accent-foreground/80 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground",
+                solid: "border-2 border-input bg-transparent hover:bg-secondary hover:text-secondary-foreground hover:border-secondary data-[state=on]:bg-secondary data-[state=on]:text-secondary-foreground data-[state=on]:border-secondary",
                 "outline-muted":
-                    "border-2 border-input bg-transparent hover:hover:bg-muted/70 hover:hover:text-muted-foreground data-[pressed]:bg-muted",
+                    "border-2 border-input bg-transparent hover:hover:bg-muted/70 hover:hover:text-muted-foreground data-[state=on]:bg-muted",
             },
             size: {
                 default: "h-10 px-3 min-w-10",
@@ -32,12 +32,18 @@ const toggleVariants = cva(
     },
 );
 
-const Toggle = ({ className, variant, size, ref, ...props }: React.ComponentPropsWithRef<typeof BaseToggle.Root> & VariantProps<typeof toggleVariants>) => (
-    <BaseToggle.Root
+const Toggle = React.forwardRef<
+    React.ElementRef<typeof TogglePrimitive.Root>,
+    React.ComponentPropsWithoutRef<typeof TogglePrimitive.Root> &
+        VariantProps<typeof toggleVariants>
+>(({ className, variant, size, ...props }, ref) => (
+    <TogglePrimitive.Root
         ref={ref}
         className={cn(toggleVariants({ variant, size, className }))}
         {...props}
     />
-);
+));
+
+Toggle.displayName = TogglePrimitive.Root.displayName;
 
 export { Toggle, toggleVariants };

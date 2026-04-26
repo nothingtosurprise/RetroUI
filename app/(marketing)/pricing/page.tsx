@@ -9,7 +9,7 @@ import {
   Badge,
   Accordion,
   Button,
-} from "@/components/retroui";
+} from "@/components/base-retroui";
 import { Check, Gift, Rocket, Crown, Users } from "lucide-react";
 import { toast } from "sonner";
 import Footer from "@/components/footer";

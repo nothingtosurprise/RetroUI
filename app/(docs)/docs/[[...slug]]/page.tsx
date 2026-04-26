@@ -3,7 +3,7 @@ import { docs } from "#site/content";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import MDX from "@/components/MDX";
-import { Text } from "@/components/retroui/Text";
+import { Text } from "@/components/base-retroui";
 import { Metadata } from "next";
 import { MoveUpRightIcon } from "lucide-react";
 import { generateToc } from "@/lib/toc";
@@ -52,7 +52,7 @@ export default async function page(props: IProps) {
   return (
     <div className="relative flex items-start">
       {/* Main Content */}
-      <div className="flex-1 space-y-12 px-4 max-w-4xl mx-auto w-full">
+      <div className="flex-1 space-y-12 max-w-2xl mx-auto w-full">
         <div className="border-b pb-6">
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">

@@ -11,8 +11,8 @@ export default function ComponentLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="container relative mx-auto px-4">
-      <div className="flex lg:gap-14 items-start">
+    <div className="max-w-[1536px] relative mx-auto px-4">
+      <div className="flex items-start">
         {/* Sidebar */}
         <div className="hidden lg:block w-60 flex-shrink-0 sticky top-20 self-start">
           <SideNav />

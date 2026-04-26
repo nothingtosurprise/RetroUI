@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { RadioGroup as BaseRadioGroup } from "@base-ui/react/radio-group";
+import * as RadioPrimitive from "@radix-ui/react-radio-group";
 import { cva, VariantProps } from "class-variance-authority";
 
 const radioVariants = cva("border-border border-2", {
@@ -41,14 +41,14 @@ const radioIndicatorVariants = cva("flex ", {
 });
 
 interface RadioGroupProps
-  extends React.ComponentProps<typeof BaseRadioGroup.Root> {}
+  extends React.ComponentProps<typeof RadioPrimitive.Root> {}
 
 export const RadioGroupRoot = ({ className, ...props }: RadioGroupProps) => (
-  <BaseRadioGroup.Root className={cn("grid gap-2", className)} {...props} />
+  <RadioPrimitive.Root className={cn("grid gap-2", className)} {...props} />
 );
 
 interface RadioProps
-  extends React.ComponentProps<typeof BaseRadioGroup.Item>,
+  extends React.ComponentProps<typeof RadioPrimitive.Item>,
     VariantProps<typeof radioVariants> {}
 
 export const RadioItem = ({
@@ -58,7 +58,7 @@ export const RadioItem = ({
   variant,
   ...props
 }: RadioProps) => (
-  <BaseRadioGroup.Item
+  <RadioPrimitive.Item
     {...props}
     className={cn(
       radioVariants({
@@ -68,11 +68,11 @@ export const RadioItem = ({
       className,
     )}
   >
-    <BaseRadioGroup.Indicator className="flex justify-center items-center">
+    <RadioPrimitive.Indicator className="flex justify-center items-center">
       <span className={radioIndicatorVariants({ size, variant })}></span>
-    </BaseRadioGroup.Indicator>
+    </RadioPrimitive.Indicator>
     {children}
-  </BaseRadioGroup.Item>
+  </RadioPrimitive.Item>
 );
 
 const RadioComponent = Object.assign(RadioGroupRoot, {

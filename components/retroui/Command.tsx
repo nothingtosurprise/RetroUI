@@ -3,6 +3,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Dialog } from "@/components/retroui/Dialog";
+import { type DialogProps } from "@radix-ui/react-dialog";
 import { Command as CommandPrimitive } from "cmdk";
 import { Check, LucideIcon, Search } from "lucide-react";
 
@@ -21,7 +22,7 @@ function Command({
   );
 }
 
-type CommandDialogProps = React.ComponentProps<typeof Dialog> & { className?: string };
+type CommandDialogProps = DialogProps & { className?: string };
 
 const CommandDialog = ({
   children,

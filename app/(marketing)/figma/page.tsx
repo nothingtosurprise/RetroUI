@@ -2,7 +2,7 @@ import {
   Button,
   Text,
   Card,
-} from "@/components/retroui";
+} from "@/components/base-retroui";
 import { ArrowRight, Figma } from "lucide-react";
 import Footer from "@/components/footer";
 import Image from "next/image";
