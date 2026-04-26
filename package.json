@@ -6,7 +6,8 @@
     "dev:content": "pnpm dlx velite --watch",
     "dev:app": "next dev",
     "dev": "run-p dev:*",
-    "build": "next build",
+    "build:content": "pnpm dlx velite",
+    "build": "pnpm build:content && next build",
     "start": "next start",
     "lint": "eslint .",
     "registry:build": "shadcn build"
