@@ -430,7 +430,7 @@ export default function ReactHomepage() {
               <Text className="text-lg font-medium mb-2">Figma Users</Text>
               <Text as="h2" className="mb-8 text-6xl lg:text-7xl [-webkit-text-stroke:6px_var(--foreground)] [paint-order:stroke_fill] text-[#FF5C57] tracking-[2px] [text-shadow:6px_6px_0_var(--foreground)]">250+</Text>
               <Button className="bg-[#FF5C57] hover:bg-[#FF5C57]/80"><FigmaIcon className="size-4 mr-2 stroke-3" /> Get Free Kit</Button>
-              <Image src="/decor/figma.svg" alt="Figma" width={200} height={200} className="absolute -right-10 -bottom-10 transform -rotate-20" />
+              <Image src="/logos/figma.svg" alt="Figma" width={200} height={200} className="absolute -right-10 -bottom-10 transform -rotate-20" />
             </div>
           </div>
         </div>

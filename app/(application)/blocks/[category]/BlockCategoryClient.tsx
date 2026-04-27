@@ -5,13 +5,10 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button, Text } from "@/components/base-retroui";
 import { useAuth } from "@/contexts/AuthContext";
+import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/react";
 import {
-  Search,
-  Filter,
   ChevronRight,
   Home,
-  Copy,
-  Check,
   Maximize2,
   Monitor,
   Tablet,
@@ -44,13 +41,6 @@ export default function BlockCategoryClient({
   const { user } = useAuth();
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedTab, setSelectedTab] = useState<Record<string, "preview" | "code">>(() => {
-    const initialTabs: Record<string, "preview" | "code"> = {};
-    initialBlockItems.forEach((item) => {
-      initialTabs[item.slug] = "preview";
-    });
-    return initialTabs;
-  });
   const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({});
   const [deviceMode, setDeviceMode] = useState<Record<string, "desktop" | "tablet" | "mobile">>(() => {
     const initialDeviceMode: Record<string, "desktop" | "tablet" | "mobile"> = {};
@@ -58,6 +48,13 @@ export default function BlockCategoryClient({
       initialDeviceMode[item.slug] = "desktop";
     });
     return initialDeviceMode;
+  });
+  const [selectedTabIndex, setSelectedTabIndex] = useState<Record<string, number>>(() => {
+    const initialTabIndex: Record<string, number> = {};
+    initialBlockItems.forEach((item) => {
+      initialTabIndex[item.slug] = 0;
+    });
+    return initialTabIndex;
   });
 
   const handleCopyCode = async (slug: string, code: string) => {
@@ -86,7 +83,7 @@ export default function BlockCategoryClient({
   return (
     <main className="container mx-auto px-4 py-8">
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-sm mb-6">
+      <div className="flex items-center gap-2 text-sm mb-4">
         <Link href="/" className="hover:underline flex items-center gap-1">
           <Home className="w-4 h-4" />
         </Link>
@@ -100,283 +97,131 @@ export default function BlockCategoryClient({
         <span className="font-bold">{categoryInfo.name}</span>
       </div>
 
-      {/* Header */}
-      <div className="mb-8">
-        <Text as="h1" className="text-4xl lg:text-5xl uppercase mb-4">
-          RetroUI {categoryInfo.name}
-        </Text>
-        <p className="text-base text-muted-foreground max-w-3xl">
-          {categoryInfo.description ||
-            `Clean Shadcn UI ${categoryInfo.name.toLowerCase()} blocks for high-impact landing pages. Preview layouts and copy ready-to-use blocks that work with any React framework.`}
-        </p>
-      </div>
-
-      {/* Actions Bar */}
-      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-12">
-        <div className="relative inline-block">
-          <div className="absolute -bottom-1.5 -right-1.5 left-1.5 top-1.5 border-2 border-black bg-black" />
-          <Button
-            variant="outline"
-            className="relative bg-yellow-400 border-2 border-black font-bold"
-            onClick={() => router.push("/blocks")}
-          >
-            <span className="flex items-center gap-2">
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="18" x2="21" y2="18" />
-              </svg>
-              View All Blocks
-            </span>
-          </Button>
-        </div>
-
-        <div className="flex gap-3 w-full lg:w-auto">
-          {/* Search Bar */}
-          <div className="relative inline-block flex-1 lg:flex-initial">
-            <div className="absolute -bottom-1 -right-1 left-1 top-1 border-2 border-black bg-black" />
-            <div className="relative flex items-center bg-white border-2 border-black">
-              <Search className="w-4 h-4 ml-4 text-muted-foreground" />
-              <input
-                type="text"
-                placeholder="type something..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="px-4 py-3 pr-4 pl-2 bg-transparent text-sm focus:outline-none w-full lg:w-[300px]"
-              />
-            </div>
-          </div>
-
-          {/* Filter Button */}
-          <div className="relative inline-block">
-            <div className="absolute -bottom-1 -right-1 left-1 top-1 border-2 border-black bg-black" />
-            <Button
-              variant="outline"
-              className="relative bg-yellow-400 border-2 border-black font-bold"
-            >
-              <Filter className="w-4 h-4" />
-              <span className="ml-2">Filter</span>
-            </Button>
-          </div>
-        </div>
-      </div>
+      <Text as="h1" className="text-4xl lg:text-5xl text-card mb-24">
+        <span className="text-card text-outline-foreground text-shadow-foreground tracking-wider">
+          RetroUI {categoryInfo.name} Blocks
+        </span>
+      </Text>
 
       {/* Block Items */}
-      <div className="space-y-16">
+      <div className="space-y-24">
         {filteredBlocks.map((item) => (
           <div key={item.id} className="space-y-6">
             {/* Block Header */}
-            <div className="flex justify-between items-start">
-              <div>
-                <Text as="h2" className="text-2xl uppercase mb-2">
-                  {item.name}
-                </Text>
-                <p className="text-sm text-muted-foreground max-w-2xl">
-                  {categoryInfo.description ||
-                    `Clean Shadcn UI ${categoryInfo.name.toLowerCase()} blocks for high-impact landing pages. Preview layouts and copy ready-to-use blocks that work with any React framework.`}
-                </p>
-              </div>
-
-              {/* Preview in Figma Button */}
-              <div className="relative inline-block hidden lg:block">
-                <div className="absolute -bottom-1 -right-1 left-1 top-1 border-2 border-black bg-black" />
-                <Button
-                  variant="outline"
-                  className="relative bg-white border-2 border-black font-bold"
-                >
-                  <svg className="w-4 h-4 mr-2" viewBox="0 0 38 57" fill="none">
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M19 28.5L19 57L0 47.5V28.5L19 38V28.5ZM0 9.5L19 0V19L0 28.5V9.5ZM19 19L38 9.5V28.5L19 38V19ZM0 47.5L19 57L19 38L0 47.5Z"
-                      fill="#1ABCFE"
-                    />
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M19 0L38 9.5L19 19V0Z"
-                      fill="#0ACF83"
-                    />
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M0 28.5L19 19L19 38L0 28.5Z"
-                      fill="#FF7262"
-                    />
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M19 19L38 28.5V9.5L19 19Z"
-                      fill="#F24E1E"
-                    />
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M19 38L38 28.5L38 47.5L19 38Z"
-                      fill="#A259FF"
-                    />
-                  </svg>
-                  Preview in Figma
-                </Button>
-              </div>
-            </div>
+            <Text as="h2" className="text-3xl lg:text-4xl mb-6">
+              {item.name}
+            </Text>
 
             {/* Tab Controls */}
-            <div className="flex justify-between items-center">
-              <div className="flex gap-2">
-                <div className="relative inline-block">
-                  <div className="absolute -bottom-1 -right-1 left-1 top-1 border-2 border-black bg-black" />
-                  <button
-                    onClick={() =>
-                      setSelectedTab((prev) => ({
-                        ...prev,
-                        [item.slug]: "preview",
-                      }))
-                    }
-                    className={`px-4 py-2 border-2 border-black font-bold text-sm relative transition-all ${
-                      selectedTab[item.slug] === "preview"
-                        ? "bg-yellow-400"
-                        : "bg-white hover:bg-gray-50"
-                    }`}
-                  >
-                    <Eye className="w-4 h-4 inline-block mr-2" />
+            <TabGroup
+              selectedIndex={selectedTabIndex[item.slug]}
+              onChange={(index) => {
+                if (index === 1 && !user) {
+                  router.push("/sign-in?redirect=/blocks/" + category);
+                  return;
+                }
+                setSelectedTabIndex((prev) => ({
+                  ...prev,
+                  [item.slug]: index,
+                }));
+              }}
+              className="bg-card border-2 shadow-lg"
+            >
+              <div className="flex justify-between items-center p-2 border-b-2 bg-white">
+                <TabList className="inline-flex">
+                  <Tab className="w-24 cursor-pointer relative text-sm p-1.5 bg-transparent data-selected:border-2 data-selected:bg-primary data-selected:text-primary-foreground focus:outline-hidden flex items-center justify-center gap-2">
+                    <Eye className="w-4 h-4" />
                     Preview
-                  </button>
-                </div>
+                  </Tab>
+                  <Tab className="w-24 cursor-pointer relative text-sm p-1.5 bg-transparent data-selected:border-2 data-selected:bg-primary data-selected:text-primary-foreground focus:outline-hidden flex items-center justify-center gap-2">
+                    <Code2 className="w-4 h-4" />
+                    Code
+                  </Tab>
+                </TabList>
 
-                <div className="relative inline-block">
-                  <div className="absolute -bottom-1 -right-1 left-1 top-1 border-2 border-black bg-black" />
-                  <button
-                    onClick={() => {
-                      if (!user) {
-                        router.push("/sign-in?redirect=/blocks/" + category);
-                        return;
-                      }
-                      setSelectedTab((prev) => ({
-                        ...prev,
-                        [item.slug]: "code",
-                      }));
-                    }}
-                    className={`px-4 py-2 border-2 border-black font-bold text-sm relative transition-all ${
-                      selectedTab[item.slug] === "code"
-                        ? "bg-yellow-400"
-                        : "bg-white hover:bg-gray-50"
-                    }`}
-                  >
-                    <Code2 className="w-4 h-4 inline-block mr-2" />
-                    Show Code
-                  </button>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex gap-2">
-                {/* Device Size Toggles */}
-                {selectedTab[item.slug] === "preview" && (
-                  <>
-                    <button
-                      onClick={() =>
-                        setDeviceMode((prev) => ({
-                          ...prev,
-                          [item.slug]: "desktop",
-                        }))
-                      }
-                      className={`p-2 border-2 border-black ${
-                        deviceMode[item.slug] === "desktop"
-                          ? "bg-yellow-400"
+                {/* Action Buttons */}
+                <div className="flex gap-2">
+                  {/* Device Size Toggles */}
+                  {selectedTabIndex[item.slug] === 0 && (
+                    <>
+                      <button
+                        onClick={() =>
+                          setDeviceMode((prev) => ({
+                            ...prev,
+                            [item.slug]: "desktop",
+                          }))
+                        }
+                        className={`p-2 border-2 cursor-pointer ${deviceMode[item.slug] === "desktop"
+                          ? "bg-primary"
                           : "bg-white hover:bg-gray-50"
-                      }`}
-                      title="Desktop view"
-                    >
-                      <Monitor className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={() =>
-                        setDeviceMode((prev) => ({
-                          ...prev,
-                          [item.slug]: "tablet",
-                        }))
-                      }
-                      className={`p-2 border-2 border-black ${
-                        deviceMode[item.slug] === "tablet"
-                          ? "bg-yellow-400"
+                          }`}
+                        title="Desktop view"
+                      >
+                        <Monitor className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() =>
+                          setDeviceMode((prev) => ({
+                            ...prev,
+                            [item.slug]: "tablet",
+                          }))
+                        }
+                        className={`p-2 border-2 cursor-pointer ${deviceMode[item.slug] === "tablet"
+                          ? "bg-primary"
                           : "bg-white hover:bg-gray-50"
-                      }`}
-                      title="Tablet view"
-                    >
-                      <Tablet className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={() =>
-                        setDeviceMode((prev) => ({
-                          ...prev,
-                          [item.slug]: "mobile",
-                        }))
-                      }
-                      className={`p-2 border-2 border-black ${
-                        deviceMode[item.slug] === "mobile"
-                          ? "bg-yellow-400"
+                          }`}
+                        title="Tablet view"
+                      >
+                        <Tablet className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() =>
+                          setDeviceMode((prev) => ({
+                            ...prev,
+                            [item.slug]: "mobile",
+                          }))
+                        }
+                        className={`p-2 border-2 cursor-pointer ${deviceMode[item.slug] === "mobile"
+                          ? "bg-primary"
                           : "bg-white hover:bg-gray-50"
-                      }`}
-                      title="Mobile view"
-                    >
-                      <Smartphone className="w-4 h-4" />
-                    </button>
-                  </>
-                )}
-
-                {/* Copy & Fullscreen Buttons */}
-                {selectedTab[item.slug] === "code" && user && item.code && (
-                  <button
-                    onClick={() => handleCopyCode(item.slug, item.code!)}
-                    className="p-2 border-2 border-black bg-white hover:bg-gray-50"
+                          }`}
+                        title="Mobile view"
+                      >
+                        <Smartphone className="w-4 h-4" />
+                      </button>
+                    </>
+                  )}
+                  <a
+                    href={`https://retroui-blocks.vercel.app/${category}/${item.slug}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 border-2 cursor-pointer border-black bg-white hover:bg-gray-50"
                     title="Copy code"
                   >
-                    {copiedStates[item.slug] ? (
-                      <Check className="w-4 h-4 text-green-600" />
-                    ) : (
-                      <Copy className="w-4 h-4" />
-                    )}
-                  </button>
-                )}
-
-                <button
-                  className="p-2 border-2 border-black bg-white hover:bg-gray-50"
-                  title="Fullscreen"
-                >
-                  <Maximize2 className="w-4 h-4" />
-                </button>
+                    <Maximize2 className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
-            </div>
 
-            {/* Preview/Code Content */}
-            <div className="border-2 border-black bg-white relative">
-              <div className="absolute -bottom-2 -right-2 left-2 top-2 border-2 border-black bg-black" />
-
-              <div className="relative bg-white">
-                {selectedTab[item.slug] === "preview" ? (
-                  <div className="p-4 flex justify-center bg-gray-50 min-h-[400px]">
-                    <div
-                      className={`${getDeviceWidth(
-                        deviceMode[item.slug]
-                      )} transition-all duration-300`}
-                    >
-                      {/* Live Preview iframe */}
-                      <iframe
-                        src={`https://retroui-blocks.vercel.app/${category}/${item.slug}`}
-                        className="w-full h-[600px] border-2 border-black rounded bg-white"
-                        title={`Preview of ${item.name}`}
-                        loading="lazy"
-                      />
-                    </div>
+              {/* Preview/Code Content */}
+              <TabPanels>
+                <TabPanel>
+                  <div
+                    className={`${getDeviceWidth(
+                      deviceMode[item.slug]
+                    )} transition-all duration-300`}
+                  >
+                    {/* Live Preview iframe */}
+                    <iframe
+                      src={`https://retroui-blocks.vercel.app/${category}/${item.slug}`}
+                      className="w-full h-[800px] flex items-center justify-center"
+                      title={`Preview of ${item.name}`}
+                      loading="lazy"
+                    />
                   </div>
-                ) : (
+                </TabPanel>
+
+                <TabPanel>
                   <div className="p-4 bg-gray-900 text-white min-h-[400px] overflow-auto">
                     {user && item.code ? (
                       <pre className="text-sm">
@@ -397,9 +242,9 @@ export default function BlockCategoryClient({
                       </div>
                     )}
                   </div>
-                )}
-              </div>
-            </div>
+                </TabPanel>
+              </TabPanels>
+            </TabGroup>
           </div>
         ))}
       </div>

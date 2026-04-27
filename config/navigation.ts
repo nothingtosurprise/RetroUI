@@ -9,9 +9,10 @@ export const navConfig: INavigationConfig = {
     { title: "Components", href: componentsRoute },
     { title: "Blocks", href: "/blocks" },
     { title: "Templates", href: "/templates" },
-    { title: "Themes", href: "/themes" },
+    { title: "Figma", href: "/figma" },
     {
       title: "Resources", href: "", children: [
+        { title: "Themes", href: "/themes" },
         { title: "Documentation", href: "/docs" },
         { title: "Blog Posts", href: "/blogs" },
         { title: "Showcase", href: "/showcase" },

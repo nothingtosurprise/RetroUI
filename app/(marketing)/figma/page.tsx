@@ -13,10 +13,9 @@ export default function FigmaHomepage() {
       {/* Hero Section */}
       <section className="bg-[url('/decor/bg-triangle-pattern.svg')] bg-cover bg-center">
         <div className="container px-4 py-24 lg:py-28 mx-auto text-center relative">
-          <div className="absolute top-10 left-10 w-16 h-16 bg-blue-400 rounded-lg border-2 border-black rotate-12" />
-          <div className="absolute top-20 right-20 w-16 h-16 bg-green-400 border-2 border-black" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }} />
-          <div className="absolute bottom-20 left-32 w-12 h-12 bg-pink-400 rounded-full border-2 border-black" />
-          <Image src="/decor/figma.svg" alt="figma decoration" width={60} height={60} className="absolute bottom-10 right-32 transform -rotate-30" />
+          <Image src="/images/logos/figma.svg" alt="figma logo" width={60} height={60} className="absolute top-10 left-10 transform -rotate-30" />
+          <Image src="/images/logos/dribble.svg" alt="dribbble logo" width={60} height={60} className="absolute bottom-10 right-12 transform -rotate-30" />
+          <Image src="/images/logos/lucide.png" alt="lucide logo" width={70} height={70} className="absolute bottom-20 left-32 transform -rotate-30" />
 
           <Text as="h1" className="uppercase mb-6 max-w-5xl mx-auto">
             The Figma Kit for
@@ -54,7 +53,7 @@ export default function FigmaHomepage() {
       </section>
 
       {/* Figma Preview Hero Image */}
-      <section className="container max-w-7xl mx-auto px-4 py-16 relative">
+      <section className="container max-w-6xl mx-auto px-4 py-16 relative">
         <div className="relative">
           <div className="absolute top-2 -right-2 -bottom-2 left-2 bg-[#FF5C57] border-2 border-black" />
 
@@ -200,11 +199,11 @@ export default function FigmaHomepage() {
           <Text as="h2" className="uppercase mb-4">
             <span className="relative inline-block">
               <Image
-                src="/decor/lego.svg"
+                src="/images/logos/figma.svg"
                 alt="figma decoration"
-                width={80}
-                height={80}
-                className="absolute -left-16 -top-6 w-20 h-20"
+                width={85}
+                height={160}
+                className="absolute -left-12 -bottom-4 transform -rotate-20"
               />
               <span className="text-outline-foreground text-shadow-foreground">Figma</span>
             </span>{" "}
@@ -260,64 +259,49 @@ export default function FigmaHomepage() {
 
       {/* Start Building CTA */}
       <section className="container max-w-7xl mx-auto px-4 py-24">
-        <div className="relative">
-          <div className="absolute -bottom-2 -right-2 left-2 top-2 border-2 border-black bg-[#0EA5E9]" />
-          <Card className="relative bg-[#0EA5E9] border-2 border-black shadow-none overflow-hidden">
-            <Card.Content className="p-20 text-center relative">
-              {/* Decorative Elements */}
-              <div className="absolute top-12 left-12 w-20 h-20 bg-[#FF6B6B] border-2 border-black rotate-12 flex items-center justify-center">
-                <div className="w-12 h-12 border-2 border-black bg-white" />
-              </div>
+        <div className="relative bg-[#0EA5E9] border-2 p-8 h-[520px] flex justify-center items-center">
+          <div className="absolute top-12 left-12 w-20 h-20 bg-[#FF6B6B] border-2 border-black rotate-12 flex items-center justify-center">
+            <div className="w-12 h-12 border-2 border-black bg-white" />
+          </div>
+          <div className="absolute top-16 right-16">
+            <svg width="80" height="100" viewBox="0 0 80 100" fill="none">
+              <rect x="10" y="10" width="60" height="80" fill="#FFD93D" stroke="black" strokeWidth="2" />
+              <ellipse cx="40" cy="30" rx="15" ry="8" fill="#FF6B6B" stroke="black" strokeWidth="2" />
+              <rect x="25" y="35" width="30" height="3" fill="black" />
+              <rect x="32" y="75" width="16" height="15" fill="#4ECDC4" stroke="black" strokeWidth="2" />
+            </svg>
+          </div>
+          <div className="absolute bottom-12 left-20">
+            <div className="w-16 h-16 bg-[#10B981] rounded-full border-2 border-black flex items-center justify-center">
+              <div className="w-8 h-8 bg-white rounded-full border-2 border-black" />
+            </div>
+          </div>
+          <div className="absolute bottom-16 right-12">
+            <svg width="60" height="80" viewBox="0 0 60 80" fill="none">
+              <rect x="5" y="5" width="50" height="70" rx="25" fill="#10B981" stroke="black" strokeWidth="2" />
+              <rect x="15" y="15" width="30" height="50" fill="#FFD93D" stroke="black" strokeWidth="2" />
+            </svg>
+          </div>
+          <div className="absolute bottom-8 right-32">
+            <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
+              <path d="M5 5L30 20L17 23L12 35L5 5Z" fill="white" stroke="black" strokeWidth="2" />
+            </svg>
+          </div>
 
-              <div className="absolute top-16 right-16">
-                <svg width="80" height="100" viewBox="0 0 80 100" fill="none">
-                  <rect x="10" y="10" width="60" height="80" fill="#FFD93D" stroke="black" strokeWidth="2" />
-                  <ellipse cx="40" cy="30" rx="15" ry="8" fill="#FF6B6B" stroke="black" strokeWidth="2" />
-                  <rect x="25" y="35" width="30" height="3" fill="black" />
-                  <rect x="32" y="75" width="16" height="15" fill="#4ECDC4" stroke="black" strokeWidth="2" />
-                </svg>
-              </div>
+          {/* Content */}
+          <div className="text-center max-w-2xl mx-auto">
+            <Text as="h2" className="text-5xl lg:text-6xl mb-8">
+              <span className="text-outline-foreground-sm text-shadow-foreground-sm">Design Your Next Dream Project</span>
+            </Text>
 
-              <div className="absolute bottom-12 left-20">
-                <div className="w-16 h-16 bg-[#10B981] rounded-full border-2 border-black flex items-center justify-center">
-                  <div className="w-8 h-8 bg-white rounded-full border-2 border-black" />
-                </div>
-              </div>
-
-              <div className="absolute bottom-16 right-12">
-                <svg width="60" height="80" viewBox="0 0 60 80" fill="none">
-                  <rect x="5" y="5" width="50" height="70" rx="25" fill="#10B981" stroke="black" strokeWidth="2" />
-                  <rect x="15" y="15" width="30" height="50" fill="#FFD93D" stroke="black" strokeWidth="2" />
-                </svg>
-              </div>
-
-              {/* Cursor */}
-              <div className="absolute bottom-8 right-32">
-                <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
-                  <path d="M5 5L30 20L17 23L12 35L5 5Z" fill="white" stroke="black" strokeWidth="2" />
-                </svg>
-              </div>
-
-              {/* Content */}
-              <div className="relative z-10">
-                <Text className="text-white text-6xl lg:text-7xl font-bold mb-8 uppercase">
-                  Start Building
-                  <br />
-                  <span className="text-outline-foreground-sm text-shadow-foreground-sm">Now</span>
-                </Text>
-
-                <div className="relative inline-block group">
-                  <div className="absolute -bottom-1.5 -right-1.5 left-1.5 top-1.5 border-2 bg-black transition-all duration-200" />
-                  <button className="px-8 py-4 text-xl font-head border-2 border-black transition-all duration-200 relative bg-[#FFD93D] shadow-none group-hover:translate-x-1 group-hover:translate-y-1 hover:shadow-none active:translate-x-1.5 active:translate-y-1.5">
-                    Get Started
-                  </button>
-                </div>
-              </div>
-            </Card.Content>
-          </Card>
+            <div className="relative inline-block group">
+              <Button>
+                Get Started
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
-
       <Footer />
     </main>
   );
