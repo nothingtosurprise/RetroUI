@@ -32,7 +32,7 @@ export default function ComponentsPage() {
           {coreComponents.map((component) => (
             <Link
               key={component.id}
-              href={`/components/${component.id}`}
+              href={`/docs/components/${component.id}`}
               className="group"
             >
               <Card className="w-full">
