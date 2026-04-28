@@ -50,7 +50,7 @@ export const templateConfig = {
                 "Easy to customize"
             ],
             color: "#d04060",
-            description: "A modern multi-page SaaS template.",
+            description: "A multipage SaaS template. Comes with marketing, blog and authentication pages. Suitable for any B2C or B2B SaaS products.",
             platform: "react",
             version: "1.0.0",
             release_date: "18th February, 2026",
@@ -79,7 +79,7 @@ export const templateConfig = {
                 "Easy to customize"
             ],
             color: "#5f4fe6",
-            description: "A modern template description.",
+            description: "A neo brutalist agency landing page template. Perfect for creative agencies, design studios, and creative professionals.",
             platform: "react",
             version: "1.0.0",
             release_date: "05 January, 2026",
@@ -108,7 +108,7 @@ export const templateConfig = {
                 "Easy to customize"
             ],
             color: "#C4A1FF",
-            description: "A modern creative portfolio template.",
+            description: "A beautiful portfolio template, made for product designers or developers. Built with RetroUI and neobrutalism design system",
             platform: "react",
             version: "1.0.0",
             release_date: "22 November, 2025",
@@ -137,7 +137,7 @@ export const templateConfig = {
                 "Easy to customize"
             ],
             color: "#FFEA8E",
-            description: "A modern AI wrapper landing page template.",
+            description: "A bright and bold SaaS template with a focus on AI image generation. Use this for your next million dollor AI Wrapper",
             platform: "react",
             version: "1.0.0",
             release_date: "10 September, 2025",

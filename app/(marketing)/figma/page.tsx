@@ -4,7 +4,6 @@ import {
   Card,
 } from "@/components/base-retroui";
 import { ArrowRight, Figma } from "lucide-react";
-import Footer from "@/components/footer";
 import Image from "next/image";
 import { StatsSection } from "@/components/StatsSection";
 import Link from "next/link";
@@ -15,11 +14,11 @@ export default function FigmaHomepage() {
       {/* Hero Section */}
       <section className="bg-[url('/decor/bg-triangle-pattern.svg')] bg-cover bg-center">
         <div className="container px-4 py-24 lg:py-28 mx-auto text-center relative">
-          <Image src="/images/logos/figma.svg" alt="figma logo" width={60} height={60} className="absolute top-10 left-10 transform -rotate-30" />
-          <Image src="/images/logos/dribble.svg" alt="dribbble logo" width={60} height={60} className="absolute bottom-10 right-12 transform -rotate-30" />
-          <Image src="/images/logos/lucide.png" alt="lucide logo" width={70} height={70} className="absolute bottom-20 left-32 transform -rotate-30" />
+          <Image src="/images/logos/figma.svg" alt="figma logo" width={60} height={60} className="hidden lg:block absolute top-10 left-10 transform -rotate-30" />
+          <Image src="/images/logos/dribble.svg" alt="dribbble logo" width={60} height={60} className="hidden lg:block absolute bottom-10 right-12 transform -rotate-30" />
+          <Image src="/images/logos/lucide.png" alt="lucide logo" width={70} height={70} className="hidden lg:block absolute bottom-20 left-32 transform -rotate-30" />
 
-          <Text as="h1" className="uppercase mb-6 max-w-5xl mx-auto">
+          <Text as="h1" className="uppercase text-5xl lg:text-6xl mb-6 max-w-5xl mx-auto">
             The Figma Kit for
             <br />
             <span className="relative inline-block text-outline-foreground text-shadow-foreground">
@@ -29,7 +28,7 @@ export default function FigmaHomepage() {
                 alt="design decoration"
                 width={150}
                 height={150}
-                className="absolute -right-14 -top-8 w-25 h-25 inline-block"
+                className="absolute -right-4 lg:-right-14 top-6 lg:-top-8 size-20 lg:size-25 inline-block"
               />
             </span>
           </Text>
@@ -55,7 +54,7 @@ export default function FigmaHomepage() {
       </section>
 
       {/* Figma Preview Hero Image */}
-      <section className="container max-w-6xl mx-auto px-4 py-16 relative">
+      <section className="container max-w-6xl mx-auto px-4 py-24 relative">
         <div className="relative">
           <div className="absolute top-2 -right-2 -bottom-2 left-2 bg-[#FF5C57] border-2 border-black" />
 
@@ -103,9 +102,9 @@ export default function FigmaHomepage() {
             alt="scale decoration"
             width={100}
             height={100}
-            className="absolute -left-20 -top-8 w-24 h-24"
+            className="absolute -left-4 lg:-left-20 -top-4 lg:-top-8 size-18 lg:size-24"
           />
-          <Text as="h2" className="uppercase">
+          <Text as="h2" className="uppercase text-4xl lg:text-5xl">
             <span className="text-outline-foreground text-shadow-foreground">Scale</span> Design and
             <br />
             Development
@@ -117,7 +116,7 @@ export default function FigmaHomepage() {
       </section>
 
       {/* Features Grid */}
-      <section className="container max-w-7xl mx-auto px-4 py-16">
+      <section className="container max-w-7xl mx-auto px-4 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Column */}
           <div className="space-y-8">
@@ -199,14 +198,14 @@ export default function FigmaHomepage() {
       {/* Figma Preview Window */}
       <section className="container max-w-7xl mx-auto px-4 py-24">
         <div className="text-center mb-12">
-          <Text as="h2" className="uppercase mb-4">
+          <Text as="h2" className="uppercase mb-4 text-4xl lg:text-5xl">
             <span className="relative inline-block">
               <Image
                 src="/images/logos/figma.svg"
                 alt="figma decoration"
                 width={85}
                 height={160}
-                className="absolute -left-12 -bottom-4 transform -rotate-20"
+                className="absolute -left-12 -bottom-4 size-18 lg:size-22 transform -rotate-20"
               />
               <span className="text-outline-foreground text-shadow-foreground">Figma</span>
             </span>{" "}
@@ -264,11 +263,11 @@ export default function FigmaHomepage() {
       {/* Start Building CTA */}
       <section className="container max-w-7xl mx-auto px-4 py-24">
         <div className="relative bg-[#0EA5E9] border-2 p-8 h-[600px] flex justify-center items-center">
-          <Image src="/decor/pen-drawing.svg" alt="Pen Drawing" width={400} height={200} className="absolute top-0 left-12" />
-          <Image src="/decor/pencil.svg" alt="Pencil" width={200} height={50} className="absolute top-0 right-12" />
-          <Image src="/decor/color-pick.svg" alt="Color pick" width={280} height={280} className="absolute bottom-0 left-0" />
-          <Image src="/decor/using-figma.svg" alt="Using figma" width={160} height={300} className="absolute bottom-20 right-12" />
-          <Image src="/decor/green-pointy-thing.svg" alt="star decoration" width={100} height={50} className="absolute bottom-0 right-100" />
+          <Image src="/decor/pen-drawing.svg" alt="Pen Drawing" width={400} height={200} className="max-lg:hidden absolute top-0 left-12" />
+          <Image src="/decor/pencil.svg" alt="Pencil" width={200} height={50} className="w-40 lg:w-50 absolute top-0 right-12" />
+          <Image src="/decor/color-pick.svg" alt="Color pick" width={280} height={280} className="max-lg:hidden absolute bottom-0 left-0" />
+          <Image src="/decor/using-figma.svg" alt="Using figma" width={160} height={300} className="max-lg:hidden absolute bottom-20 right-12" />
+          <Image src="/decor/green-pointy-thing.svg" alt="star decoration" width={100} height={50} className="w-15 lg:w-25 absolute bottom-0 right-100" />
 
           {/* Content */}
           <div className="text-center max-w-2xl mx-auto">
@@ -282,7 +281,6 @@ export default function FigmaHomepage() {
           </div>
         </div>
       </section>
-      <Footer />
     </main>
   );
 }

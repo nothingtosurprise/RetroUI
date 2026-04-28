@@ -53,7 +53,7 @@ function Footer() {
   return (
     <footer className="mt-24 bg-card">
       <div className="border-t-2 relative">
-        <div className="grid min-h-[400px] container px-4 mx-auto grid-cols-1 lg:grid-cols-5 gap-12 divide-x-2 divide-border">
+        <div className="grid min-h-[400px] container px-4 mx-auto grid-cols-1 lg:grid-cols-5 gap-12 max-md:divide-y-2 md:divide-x-2 divide-border">
           <div className="lg:col-span-2 pr-8 py-12 relative mg">
             <div className="flex items-center gap-2 mb-2">
               <Image src="/images/logo.png" alt="RetroUI" width={40} height={40} />
@@ -124,7 +124,7 @@ function Footer() {
 
           </div>
 
-          <div className="lg:col-span-3 grid grid-cols-1 lg:grid-cols-3 gap-8 divide-x-2 divide-border">
+          <div className="lg:col-span-3 grid grid-cols-1 lg:grid-cols-3 gap-8 max-md:divide-y-2 md:divide-x-2 divide-border">
             <div className="lg:col-span-1 py-8">
               <Text as="h6" className="mb-6">
                 PRODUCT
@@ -178,9 +178,6 @@ function Footer() {
                 ))}
               </ul>
             </div>
-
-
-
           </div>
         </div>
         <div>
@@ -195,7 +192,7 @@ function Footer() {
           </div>
         </div>
         <div>
-          <div className="grid divide-x-2 divide-border grid-cols-1 lg:grid-cols-3 container mx-auto border-x-2">
+          <div className="grid max-md:divide-y-2 md:divide-x-2 divide-border grid-cols-1 lg:grid-cols-3 container mx-auto border-x-2">
             <a
               href="https://commercn.com"
               target="_blank"

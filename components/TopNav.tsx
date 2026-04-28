@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/base-retroui/Button";
 import {
   NavigationMenu,
@@ -12,6 +13,7 @@ import {
   NavigationMenuContent,
   NavigationMenuLink
 } from "@/components/ui/navigation-menu";
+import { Drawer } from "@/components/retroui/Drawer";
 import { navConfig } from "@/config/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import UserMenu from "@/components/UserMenu";
@@ -19,6 +21,7 @@ import UserMenu from "@/components/UserMenu";
 export default function TopNav() {
   const { user } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -108,14 +111,101 @@ export default function TopNav() {
           </div>
 
           <div className="flex items-center space-x-3">
-            {user ? (
-              <UserMenu user={user} />
-            ) : (
-              <>
-                <Button variant="outline" size="sm" className="bg-card" render={<Link href="/sign-in">Sign In</Link>} />
-                <Button size="sm" render={<Link href="/pricing">Get Access</Link>} />
-              </>
-            )}
+            {/* Mobile Menu Button */}
+            <Drawer open={mobileMenuOpen} onOpenChange={setMobileMenuOpen} direction="left">
+              <Drawer.Trigger asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="md:hidden p-2 mr-0 bg-card"
+                  aria-label="Toggle menu"
+                >
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </Drawer.Trigger>
+              <Drawer.Content>
+                <Drawer.Header>
+                  <div className="flex items-center justify-between">
+                    <Drawer.Title className="text-foreground font-head text-xl">
+                      Menu
+                    </Drawer.Title>
+                    <Drawer.Close asChild>
+                      <Button variant="outline" size="sm" className="p-2 bg-card">
+                        <X className="h-5 w-5" />
+                      </Button>
+                    </Drawer.Close>
+                  </div>
+                </Drawer.Header>
+                <nav className="flex flex-col space-y-1 p-4">
+                  {navConfig.topNavItems.map((item) => {
+                    if (item.children && item.children.length > 0) {
+                      return (
+                        <div key={item.title} className="space-y-1">
+                          <div className="font-medium text-foreground py-2 px-3">
+                            {item.title}
+                          </div>
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.title}
+                              href={child.href}
+                              className="block py-2 px-6 text-sm hover:bg-muted rounded"
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              {child.title}
+                            </Link>
+                          ))}
+                        </div>
+                      );
+                    }
+                    return (
+                      <Link
+                        key={item.title}
+                        href={item.href}
+                        className="block py-2 px-3 hover:bg-muted rounded"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.title}
+                      </Link>
+                    );
+                  })}
+                </nav>
+                <Drawer.Footer>
+                  <div className="flex flex-col gap-2 w-full">
+                    {user ? (
+                      <div className="px-3 py-2">
+                        <UserMenu user={user} />
+                      </div>
+                    ) : (
+                      <>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="w-full"
+                          render={<Link href="/sign-in">Sign In</Link>}
+                        />
+                        <Button
+                          size="sm"
+                          className="w-full"
+                          render={<Link href="/pricing">Get Access</Link>}
+                        />
+                      </>
+                    )}
+                  </div>
+                </Drawer.Footer>
+              </Drawer.Content>
+            </Drawer>
+
+            {/* Desktop Auth Buttons */}
+            <div className="hidden md:flex items-center space-x-3">
+              {user ? (
+                <UserMenu user={user} />
+              ) : (
+                <>
+                  <Button variant="outline" size="sm" className="bg-card" render={<Link href="/sign-in">Sign In</Link>} />
+                  <Button size="sm" render={<Link href="/pricing">Get Access</Link>} />
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>

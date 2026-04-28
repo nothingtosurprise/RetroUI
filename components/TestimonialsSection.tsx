@@ -6,7 +6,7 @@ export function TestimonialsSection() {
   return (
     <section className="container mx-auto px-4 py-28 space-y-14">
       <div className="text-center">
-        <Text as="h2" className="uppercase">
+        <Text as="h2" className="uppercase text-4xl lg:text-5xl">
           <span className="relative text-outline-foreground text-shadow-foreground">
             <Image src="/decor/heart.svg" alt="components decoration" width={60} height={60} className="absolute h-[60px] w-[60px] -left-10 -top-4" />
             Loved

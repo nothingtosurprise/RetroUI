@@ -37,7 +37,7 @@ export default function ReactHomepage() {
     <main>
       <section className="bg-[url('/decor/bg-triangle-pattern.svg')] bg-cover bg-center">
         <div className="container px-4 py-24 lg:py-28 mx-auto text-center">
-          <Text as="h1" className="uppercase">
+          <Text as="h1" className="uppercase text-5xl lg:text-6xl">
             Not every website has to
             <br />
             <span className="text-card text-outline-foreground text-shadow-foreground">L<Image src="/decor/eye.svg" alt="look decoration" height={98} width={98} className="inline-block -mx-2" />k the same!</span>
@@ -62,7 +62,7 @@ export default function ReactHomepage() {
             </Button>
           </div>
 
-          <div className="flex items-center justify-center gap-2 text-sm">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-2 text-sm">
             <div className="flex -space-x-3">
               {users.map((user) => (
                 <div key={user.name} className="rounded-full border-2 bg-card">
@@ -81,7 +81,7 @@ export default function ReactHomepage() {
       {/* Features Section */}
       <section className="container mx-auto px-4 py-28 space-y-14">
         <div className="text-center space-y-6">
-          <Text as="h2" className="uppercase">
+          <Text as="h2" className="uppercase text-4xl lg:text-5xl">
             <span className="relative text-outline-foreground text-shadow-foreground">
               <Image src="/decor/pen_design.svg" alt="components decoration" width={140} height={140} className="absolute h-[140px] w-[140px] -left-18 -top-14" />
               Desiged to Ship Fast
@@ -211,7 +211,7 @@ export default function ReactHomepage() {
       {/* UI Components Section */}
       <section className="container max-w-7xl mx-auto px-4 py-28 space-y-14">
         <div className="text-center space-y-6">
-          <Text as="h2" className="uppercase">
+          <Text as="h2" className="uppercase text-4xl lg:text-5xl">
             Neo Brutalist UI
             <br />
             <span className="relative text-outline-foreground text-shadow-foreground">
@@ -270,8 +270,8 @@ export default function ReactHomepage() {
       {/* Blocks Section */}
       <section className="container mx-auto px-4 py-28 space-y-14">
         <div className="text-center space-y-6">
-          <Text as="h2" className="uppercase">
-            Build faster with 300+
+          <Text as="h2" className="uppercase text-4xl lg:text-5xl">
+            Build faster with 200+
             <br />
             <span className="relative text-outline-foreground text-shadow-foreground">
               <Image src="/decor/lego.svg" alt="components decoration" width={90} height={90} className="absolute h-[90px] w-[90px] -left-16 -top-6" />
@@ -315,8 +315,8 @@ export default function ReactHomepage() {
 
       {/* Ready-to-Use Templates */}
       <section className="container mx-auto px-4 py-28 space-y-14">
-        <div className="flex items-center justify-between">
-          <Text as="h2" className="uppercase">
+        <div className="flex flex-col md:flex-row gap-8 items-start md:items-center md:justify-between">
+          <Text as="h2" className="uppercase text-4xl lg:text-5xl">
             Pre-built and Customizable
             <br />
             <span className="relative text-outline-foreground text-shadow-foreground">
@@ -342,7 +342,7 @@ export default function ReactHomepage() {
               </div>
 
               <div>
-                <Text as="h5" className="mb-2 font-normal">{template.name}</Text>
+                <Text as="h3" className="mb-2 font-normal">{template.name}</Text>
                 <Text className="text-sm text-muted-foreground mb-4">{template.description}</Text>
                 <div className="flex justify-between gap-6">
                   <Link href={`/templates/${template.slug}`} className="relative inline-block group flex-1">

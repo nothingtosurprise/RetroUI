@@ -7,7 +7,7 @@ export function StatsSection() {
     <section className="container mx-auto px-4 py-28">
       <div className="relative">
         <div className="absolute top-2 left-2 -right-2 -bottom-2 bg-primary border-2 border-border"></div>
-        <div className="relative grid grid-cols-3 divide-x-2 divide-border bg-card border-2 border-black *:h-[420px]">
+        <div className="relative grid grid-cols-1 max-md:divide-y-2 md:grid-cols-3 md:divide-x-2 divide-border bg-card border-2 border-black *:h-[420px]">
           <div className="p-8 relative overflow-hidden">
             <Text className="text-lg font-medium mb-2">GitHub Stars</Text>
             <Text as="h3" className="mb-8 text-6xl lg:text-7xl [-webkit-text-stroke:6px_var(--foreground)] [paint-order:stroke_fill] text-[#01C971] tracking-[2px] [text-shadow:6px_6px_0_var(--foreground)]">1.5K+</Text>

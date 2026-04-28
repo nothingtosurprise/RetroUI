@@ -59,7 +59,7 @@ export const BlocksParallax = () => {
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
 
       <div className="container max-w-7xl mx-auto px-4 h-full">
-        <div className="grid grid-cols-3 gap-6 h-full">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 h-full">
           {/* First Column - Bottom to Top */}
           <motion.div
             style={{ y: translateYUp }}

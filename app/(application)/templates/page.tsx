@@ -61,7 +61,7 @@ export default function TemplatesPage() {
         <div className="flex items-start mb-4">
           <Text as="h1">
             Modern React{" "}
-            <span className="relative inline-flex items-center">
+            {/* <span className="relative inline-flex items-center">
               Templates
               <Image
                 src="/decor/pay.svg"
@@ -70,6 +70,10 @@ export default function TemplatesPage() {
                 height={60}
                 className="h-[60px] w-[60px] -ml-2 -mt-2 inline-block"
               />
+            </span> */}
+            <span className="relative text-outline-foreground text-shadow-foreground">
+              <Image src="/decor/paint_brush.svg" alt="components decoration" width={100} height={100} className="absolute h-[100px] w-[100px] -left-14 -top-8" />
+              Templates
             </span>
             <br />
             Crafted with Tailwind CSS
@@ -103,10 +107,10 @@ export default function TemplatesPage() {
               <Newspaper className="w-4 h-4 mr-2" />
               Landing Page
             </Tabs.Trigger>
-            <Tabs.Trigger value="ecommerce">
+            {/* <Tabs.Trigger value="ecommerce">
               <ShoppingCart className="w-4 h-4 mr-2" />
               Ecommerce
-            </Tabs.Trigger>
+            </Tabs.Trigger> */}
             <Tabs.Trigger value="dashboard">
               <LayoutDashboard className="w-4 h-4 mr-2" />
               Dashboard
