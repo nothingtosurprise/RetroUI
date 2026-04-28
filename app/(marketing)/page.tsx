@@ -37,6 +37,11 @@ export default function ReactHomepage() {
     <main>
       <section className="bg-[url('/decor/bg-triangle-pattern.svg')] bg-cover bg-center">
         <div className="container px-4 py-24 lg:py-28 mx-auto text-center">
+          <Image src="/images/logos/tailwind.svg" alt="figma logo" width={60} height={60} className="hidden lg:block absolute top-10 right-10 transform -rotate-30" />
+          <Image src="/images/logos/react.svg" alt="dribbble logo" width={60} height={60} className="hidden lg:block absolute bottom-10 right-12 transform -rotate-30" />
+          <Image src="/images/logos/nextjs.svg" alt="lucide logo" width={70} height={70} className="hidden lg:block absolute bottom-20 left-32 transform -rotate-30" />
+
+
           <Text as="h1" className="uppercase text-5xl lg:text-6xl">
             Not every website has to
             <br />
@@ -106,7 +111,7 @@ export default function ReactHomepage() {
 
                   <div className="flex flex-col justify-between p-6">
                     <div>
-                      <Text as="h4" className="mb-4">Copy-paste or just use your CLI</Text>
+                      <Text as="h3" className="mb-4">Copy-paste or just use your CLI</Text>
                       <p className="text-sm text-muted-foreground mb-6">
                         Discover our bold neo-brutalist sections. With striking hero blocks, pricing tables, and feature grids, your product will stand out in the market.
                       </p>
@@ -141,7 +146,7 @@ export default function ReactHomepage() {
                 </div>
 
                 <div className="p-6">
-                  <Text as="h4" className="mb-4">Fully customizable</Text>
+                  <Text as="h3" className="mb-4">Fully customizable</Text>
                   <p className="text-sm text-muted-foreground">
                     Own and modify every component. Tailwind CSS allows you to adjust colors, borders, shadows, and animations to fit your brand.
                   </p>
@@ -160,7 +165,7 @@ export default function ReactHomepage() {
                 </div>
 
                 <div className="p-6">
-                  <Text as="h4" className="mb-4">Integrate with your favorite tech stack</Text>
+                  <Text as="h3" className="mb-4">Integrate with your favorite tech stack</Text>
                   <p className="text-sm text-muted-foreground">
                     This solution integrates smoothly with React apps using TypeScript and Tailwind CSS, adhering to Shadcn/ui patterns while offering flexibility across frameworks.
                   </p>
@@ -179,7 +184,7 @@ export default function ReactHomepage() {
 
                   <div className="flex flex-col justify-between p-6">
                     <div>
-                      <Text as="h4" className="mb-4">Native MCP server support</Text>
+                      <Text as="h3" className="mb-4">MCP server support with Shadcn</Text>
                       <p className="text-sm text-muted-foreground mb-6">
                         Discover our bold neo-brutalist sections. With striking hero blocks, pricing tables, and feature grids, your product will stand out in the market.
                       </p>
@@ -197,7 +202,7 @@ export default function ReactHomepage() {
                             <CopyIcon className="w-4 h-4" />
                           </div>
                         </div>
-                        <code className="text-sm font-mono">npx @retroui/mcp start</code>
+                        <code className="text-sm font-mono">npx shadcn@latest mcp init</code>
                       </div>
                     </div>
                   </div>
@@ -247,7 +252,7 @@ export default function ReactHomepage() {
 
                   {/* Text Section */}
                   <div className="p-4 border-t-2">
-                    <Text as="h6" className="mb-2 uppercase">
+                    <Text as="h5" className="mb-2 uppercase">
                       {component.displayName}
                     </Text>
                     <p className="text-sm text-muted-foreground">
@@ -298,7 +303,7 @@ export default function ReactHomepage() {
                   />
                 </div>
                 <div className="p-6">
-                  <Text as="h6" className="mb-2">{block.name}</Text>
+                  <Text as="h5" className="mb-2">{block.name}</Text>
                   <p className="text-sm text-muted-foreground">{block.description}</p>
                 </div>
               </Card.Content>
