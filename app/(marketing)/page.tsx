@@ -7,10 +7,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   CopyIcon,
-  FigmaIcon,
-  GithubIcon,
   MessageCircle,
-  MessageCircleIcon,
   Star,
 } from "lucide-react";
 import Footer from "@/components/footer";
@@ -21,7 +18,8 @@ import { componentConfig } from "@/config/components";
 import Link from "next/link";
 import { blockConfig } from "@/config/blocks";
 import { templateConfig } from "@/config/templates";
-import { testimonials } from "@/config/data";
+import { StatsSection } from "@/components/StatsSection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 
 const coreComponents = Object.entries(componentConfig.core)
   .filter(([_, component]) => component.cover)
@@ -363,80 +361,8 @@ export default function ReactHomepage() {
       </section>
 
 
-      {/* Testimonials Section */}
-      <section className="container mx-auto px-4 py-28 space-y-14">
-        <div className="text-center">
-          <Text as="h2" className="uppercase">
-            <span className="relative text-outline-foreground text-shadow-foreground">
-              <Image src="/decor/heart.svg" alt="components decoration" width={60} height={60} className="absolute h-[60px] w-[60px] -left-10 -top-4" />
-              Loved
-            </span>
-            {" "}by devs, designers
-            <br />
-            & creators
-          </Text>
-        </div>
-
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.name} className="relative">
-              {/* <div className="absolute bg-primary top-1 left-1 -bottom-1 -right-1 border-2 border-border"></div> */}
-              <div
-                className="bg-white p-4 border-2 relative"
-              >
-                <Image src="https://pub-5f7cbdfd9ffa4c838e386788f395f0c4.r2.dev/icons/quote.svg" alt="quote" width={48} height={48} className="w-12 h-12 mb-2" />
-
-                <Text className="mb-6 leading-relaxed">{testimonial.quote}</Text>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 border-2 border-black rounded-full bg-gray-200 overflow-hidden">
-                    <img
-                      src={testimonial.avatar || "/placeholder.svg"}
-                      alt={testimonial.name}
-                      className="w-full h-full object-cover rounded-full"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-black">{testimonial.name}</h3>
-                    <p className="text-sm text-muted-foreground font-medium">{testimonial.position}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-
-      {/* CTA */}
-      <section className="container mx-auto px-4 py-28">
-        <div className="relative">
-          <div className="absolute top-2 left-2 -right-2 -bottom-2 bg-primary border-2 border-border"></div>
-          <div className="relative grid grid-cols-3 divide-x-2 divide-border bg-card border-2 border-black *:h-[420px]">
-            <div className="p-8 relative overflow-hidden">
-              <Text className="text-lg font-medium mb-2">GitHub Stars</Text>
-              <Text as="h3" className="mb-8 text-6xl lg:text-7xl [-webkit-text-stroke:6px_var(--foreground)] [paint-order:stroke_fill] text-[#01C971] tracking-[2px] [text-shadow:6px_6px_0_var(--foreground)]">1.5K+</Text>
-              <Button className="bg-[#01C971] hover:bg-[#01C971]/80"><GithubIcon className="size-4 mr-2 stroke-3" /> Star on GitHub</Button>
-              <Image src="/decor/github.svg" alt="GitHub" width={200} height={200} className="absolute -right-8 -bottom-8 transform -rotate-20" />
-            </div>
-            <div className="p-8 relative overflow-hidden">
-              <Text className="text-lg font-medium mb-2">Discord Members</Text>
-              <Text as="h3" className="mb-8 text-6xl lg:text-7xl [-webkit-text-stroke:6px_var(--foreground)] [paint-order:stroke_fill] text-[#01ABFF] tracking-[2px] [text-shadow:6px_6px_0_var(--foreground)]">120+</Text>
-              <Button className="bg-[#01ABFF] hover:bg-[#01ABFF]/80"><MessageCircleIcon className="size-4 mr-2 stroke-3" /> Join Community</Button>
-              <Image src="/decor/discord.svg" alt="Discord" width={200} height={200} className="absolute -right-4 -bottom-4 transform -rotate-10" />
-
-            </div>
-            <div className="p-8 relative overflow-hidden">
-              <Text className="text-lg font-medium mb-2">Figma Users</Text>
-              <Text as="h2" className="mb-8 text-6xl lg:text-7xl [-webkit-text-stroke:6px_var(--foreground)] [paint-order:stroke_fill] text-[#FF5C57] tracking-[2px] [text-shadow:6px_6px_0_var(--foreground)]">250+</Text>
-              <Button className="bg-[#FF5C57] hover:bg-[#FF5C57]/80"><FigmaIcon className="size-4 mr-2 stroke-3" /> Get Free Kit</Button>
-              <Image src="/logos/figma.svg" alt="Figma" width={200} height={200} className="absolute -right-10 -bottom-10 transform -rotate-20" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
+      <TestimonialsSection />
+      <StatsSection />
     </main>
   );
 }

@@ -6,6 +6,8 @@ import {
 import { ArrowRight, Figma } from "lucide-react";
 import Footer from "@/components/footer";
 import Image from "next/image";
+import { StatsSection } from "@/components/StatsSection";
+import Link from "next/link";
 
 export default function FigmaHomepage() {
   return (
@@ -193,6 +195,7 @@ export default function FigmaHomepage() {
         </div>
       </section>
 
+      <StatsSection />
       {/* Figma Preview Window */}
       <section className="container max-w-7xl mx-auto px-4 py-24">
         <div className="text-center mb-12">
@@ -257,36 +260,15 @@ export default function FigmaHomepage() {
         </div>
       </section>
 
+
       {/* Start Building CTA */}
       <section className="container max-w-7xl mx-auto px-4 py-24">
-        <div className="relative bg-[#0EA5E9] border-2 p-8 h-[520px] flex justify-center items-center">
-          <div className="absolute top-12 left-12 w-20 h-20 bg-[#FF6B6B] border-2 border-black rotate-12 flex items-center justify-center">
-            <div className="w-12 h-12 border-2 border-black bg-white" />
-          </div>
-          <div className="absolute top-16 right-16">
-            <svg width="80" height="100" viewBox="0 0 80 100" fill="none">
-              <rect x="10" y="10" width="60" height="80" fill="#FFD93D" stroke="black" strokeWidth="2" />
-              <ellipse cx="40" cy="30" rx="15" ry="8" fill="#FF6B6B" stroke="black" strokeWidth="2" />
-              <rect x="25" y="35" width="30" height="3" fill="black" />
-              <rect x="32" y="75" width="16" height="15" fill="#4ECDC4" stroke="black" strokeWidth="2" />
-            </svg>
-          </div>
-          <div className="absolute bottom-12 left-20">
-            <div className="w-16 h-16 bg-[#10B981] rounded-full border-2 border-black flex items-center justify-center">
-              <div className="w-8 h-8 bg-white rounded-full border-2 border-black" />
-            </div>
-          </div>
-          <div className="absolute bottom-16 right-12">
-            <svg width="60" height="80" viewBox="0 0 60 80" fill="none">
-              <rect x="5" y="5" width="50" height="70" rx="25" fill="#10B981" stroke="black" strokeWidth="2" />
-              <rect x="15" y="15" width="30" height="50" fill="#FFD93D" stroke="black" strokeWidth="2" />
-            </svg>
-          </div>
-          <div className="absolute bottom-8 right-32">
-            <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
-              <path d="M5 5L30 20L17 23L12 35L5 5Z" fill="white" stroke="black" strokeWidth="2" />
-            </svg>
-          </div>
+        <div className="relative bg-[#0EA5E9] border-2 p-8 h-[600px] flex justify-center items-center">
+          <Image src="/decor/pen-drawing.svg" alt="Pen Drawing" width={400} height={200} className="absolute top-0 left-12" />
+          <Image src="/decor/pencil.svg" alt="Pencil" width={200} height={50} className="absolute top-0 right-12" />
+          <Image src="/decor/color-pick.svg" alt="Color pick" width={280} height={280} className="absolute bottom-0 left-0" />
+          <Image src="/decor/using-figma.svg" alt="Using figma" width={160} height={300} className="absolute bottom-20 right-12" />
+          <Image src="/decor/green-pointy-thing.svg" alt="star decoration" width={100} height={50} className="absolute bottom-0 right-100" />
 
           {/* Content */}
           <div className="text-center max-w-2xl mx-auto">
@@ -295,9 +277,7 @@ export default function FigmaHomepage() {
             </Text>
 
             <div className="relative inline-block group">
-              <Button>
-                Get Started
-              </Button>
+              <Button className="text-lg" render={<Link href="/signup">Get Started</Link>} />
             </div>
           </div>
         </div>
