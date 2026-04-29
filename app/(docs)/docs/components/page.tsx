@@ -50,7 +50,7 @@ export default function ComponentsPage() {
 
                   {/* Text Section */}
                   <div className="p-4 border-t-2">
-                    <Text as="h6" className="mb-2 uppercase">
+                    <Text as="h3" className="mb-2 uppercase">
                       {component.displayName}
                     </Text>
                     <p className="text-sm text-muted-foreground">

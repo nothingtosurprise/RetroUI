@@ -246,13 +246,13 @@ export default function ReactHomepage() {
                       alt={component.displayName}
                       width={400}
                       height={200}
-                      className="object-contain"
+                      className="object-contain w-full h-auto hover:scale-105 transition-transform duration-300"
                     />
                   )}
 
                   {/* Text Section */}
                   <div className="p-4 border-t-2">
-                    <Text as="h5" className="mb-2 uppercase">
+                    <Text as="h3" className="mb-2">
                       {component.displayName}
                     </Text>
                     <p className="text-sm text-muted-foreground">
