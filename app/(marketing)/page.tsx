@@ -58,11 +58,11 @@ export default function ReactHomepage() {
               {/* Outline frame - sits behind, extends to cover shadow */}
               <div className="absolute -bottom-1.5 -right-1.5 left-1.5 top-1.5 border-2 bg-primary transition-all duration-200" />
 
-              <button className="px-4 py-1.5 font-head border-2 transition-all duration-200 relative bg-card shadow-none group-hover:translate-x-1 group-hover:translate-y-1 hover:shadow-none active:translate-x-1.5 active:translate-y-1.5">
+              <button className="px-4 py-1.5 text-lg font-head border-2 transition-all duration-200 relative bg-card shadow-none group-hover:translate-x-1 group-hover:translate-y-1 hover:shadow-none active:translate-x-1.5 active:translate-y-1.5">
                 Browse Blocks
               </button>
             </div>
-            <Button variant="link">
+            <Button variant="link" className="text-lg">
               All Products <ArrowRight className="w-4 h-4 ml-1" />
             </Button>
           </div>

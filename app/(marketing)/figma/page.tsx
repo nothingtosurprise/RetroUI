@@ -38,13 +38,13 @@ export default function FigmaHomepage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-4">
-            <div className="relative inline-block group">
+            <div className="relative inline-block group text-lg">
               <div className="absolute -bottom-1.5 -right-1.5 left-1.5 top-1.5 border-2 bg-primary transition-all duration-200" />
               <a href="https://www.figma.com/design/B6pBWOppQhrykmIz7fKsRY/RetroUI-Pro-Figma-%7C-v-1.3.0?node-id=4470-1149&t=MdhjWjH05QdSGtQt-1" target="_blank" className="px-6 py-3 font-head border-2 transition-all duration-200 relative bg-card shadow-none group-hover:translate-x-1 group-hover:translate-y-1 hover:shadow-none active:translate-x-1.5 active:translate-y-1.5 flex items-center gap-2">
                 Live Preview
               </a>
             </div>
-            <Button variant="link" render={<Link href="/pricing" />}>
+            <Button className="text-lg" variant="link" render={<Link href="/pricing" />}>
               Access Now
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
