@@ -104,6 +104,10 @@
       "name": "switch",
       "filePath": "components/retroui/Switch.tsx"
     },
+    "tab": {
+      "name": "tab",
+      "filePath": "components/retroui/Tab.tsx"
+    },
     "table": {
       "name": "table",
       "filePath": "components/retroui/Table.tsx"
@@ -993,6 +997,70 @@
     "baseui-typography-p": {
       "name": "baseui-typography-p",
       "filePath": "preview/components/baseui-typography-p.tsx"
+    },
+    "bar-chart-style-default": {
+      "name": "bar-chart-style-default",
+      "filePath": "preview/charts/bar-chart-style-default.tsx"
+    },
+    "bar-chart-style-grouped": {
+      "name": "bar-chart-style-grouped",
+      "filePath": "preview/charts/bar-chart-style-grouped.tsx"
+    },
+    "bar-chart-style-horizontal": {
+      "name": "bar-chart-style-horizontal",
+      "filePath": "preview/charts/bar-chart-style-horizontal.tsx"
+    },
+    "bar-chart-style-multiple": {
+      "name": "bar-chart-style-multiple",
+      "filePath": "preview/charts/bar-chart-style-multiple.tsx"
+    },
+    "bar-chart-style-stacked": {
+      "name": "bar-chart-style-stacked",
+      "filePath": "preview/charts/bar-chart-style-stacked.tsx"
+    },
+    "area-chart-style-default": {
+      "name": "area-chart-style-default",
+      "filePath": "preview/charts/area-chart-style-default.tsx"
+    },
+    "area-chart-style-minimal": {
+      "name": "area-chart-style-minimal",
+      "filePath": "preview/charts/area-chart-style-minimal.tsx"
+    },
+    "area-chart-style-multiple": {
+      "name": "area-chart-style-multiple",
+      "filePath": "preview/charts/area-chart-style-multiple.tsx"
+    },
+    "area-chart-style-stacked": {
+      "name": "area-chart-style-stacked",
+      "filePath": "preview/charts/area-chart-style-stacked.tsx"
+    },
+    "line-chart-style-default": {
+      "name": "line-chart-style-default",
+      "filePath": "preview/charts/line-chart-style-default.tsx"
+    },
+    "line-chart-style-curved": {
+      "name": "line-chart-style-curved",
+      "filePath": "preview/charts/line-chart-style-curved.tsx"
+    },
+    "line-chart-style-dots": {
+      "name": "line-chart-style-dots",
+      "filePath": "preview/charts/line-chart-style-dots.tsx"
+    },
+    "line-chart-style-multiple": {
+      "name": "line-chart-style-multiple",
+      "filePath": "preview/charts/line-chart-style-multiple.tsx"
+    },
+    "pie-chart-style-default": {
+      "name": "pie-chart-style-default",
+      "filePath": "preview/charts/pie-chart-style-default.tsx"
+    },
+    "pie-chart-style-donut": {
+      "name": "pie-chart-style-donut",
+      "filePath": "preview/charts/pie-chart-style-donut.tsx"
+    },
+    "pie-chart-style-small": {
+      "name": "pie-chart-style-small",
+      "filePath": "preview/charts/pie-chart-style-small.tsx"
     }
   }
 }

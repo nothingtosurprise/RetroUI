@@ -2,13 +2,13 @@
 
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || "");
 
 export async function subscribeToNewsletter(email: string) {
   try {
     const { data, error } = await resend.contacts.create({
       email,
-      audienceId: process.env.RESEND_AUDIENCE_ID!,
+      audienceId: process.env.RESEND_AUDIENCE_ID || "",
     });
 
     if (error) {

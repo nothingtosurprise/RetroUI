@@ -147,7 +147,7 @@ export default async function page(props: IProps) {
 
       <hr className="my-12" />
 
-      <Button render={() => <Link href="/blogs" className="inline-flex">← Back to blogs</Link>} aria-label="Return to all blog posts" variant="secondary" />
+      <Button render={<Link href="/blogs" className="inline-flex">← Back to blogs</Link>} aria-label="Return to all blog posts" variant="secondary" />
     </article>
   );
 }

@@ -24,6 +24,7 @@ export function ComponentShowcase({ name, children }: IComponentShowcase) {
 
   const Code = React.Children.toArray(children)[0];
 
+  console.log(Code)
   return (
     <TabGroup>
       <TabList className="border bg-card p-1 text-sm inline-flex">
