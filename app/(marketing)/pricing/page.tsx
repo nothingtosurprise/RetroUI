@@ -14,6 +14,7 @@ import { Check, Gift, Rocket, Crown, Users } from "lucide-react";
 import { toast } from "sonner";
 import { authApi } from "@/lib/api-client";
 import { getPriceId, type PricingTier } from "@/lib/pricing";
+import Link from "next/link";
 
 const osFeatures = [
   { text: "All RetroUI base components", enabled: true },
@@ -176,9 +177,7 @@ export default function PricingPage() {
               <Text className="text-5xl font-head mb-8">
                 $0
               </Text>
-              <Button>
-                Browse Components
-              </Button>
+              <Button render={<Link href="/docs/components">Browse Components</Link>} />
             </Card.Header>
 
             <Card.Content className="space-y-3 border-t-2 p-6">

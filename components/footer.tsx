@@ -24,7 +24,7 @@ const supportLinks = [
 ];
 
 const productLinks = [
-  { name: "OS Components", href: "/components" },
+  { name: "OS Components", href: "/docs/components" },
   { name: "UI Blocks", href: "/blocks" },
   { name: "Templates", href: "/templates" },
   { name: "Figma Kit", href: "/figma" },
