@@ -64,6 +64,7 @@ export default async function RootLayout({
             `,
           }}
         />
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="97dd6182-c656-4265-97e0-ee9613b88078"></script>
         <script async src="https://assets.endorsely.com/endorsely.js" data-endorsely="7e205a3d-7039-41f3-9b4f-52929d5489d2" />
       </head>
       <body
