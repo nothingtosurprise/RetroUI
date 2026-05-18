@@ -73,7 +73,7 @@ export function ProfileSettings() {
   return (
     <div className="space-y-6">
       {/* Profile Form */}
-      <Card className="w-full bg-white">
+      <Card className="w-full shadow-none">
         <form onSubmit={handleSubmit}>
           <div className="p-6 space-y-4">
             <div className="space-y-2">
@@ -90,81 +90,27 @@ export function ProfileSettings() {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   placeholder="Your name"
-                  className="w-full px-4 py-3 border-2 border-black relative bg-white text-base focus:outline-none focus:ring-0"
+                  className="w-full px-4 py-2 border-2 border-black relative bg-white text-base focus:outline-none focus:ring-0"
                 />
               </div>
             </div>
 
-            <div className="space-y-2">
-              <label htmlFor="email" className="block text-sm font-bold">
-                Email
-              </label>
-              <div className="relative inline-block w-full">
-                <div className="absolute -bottom-1 -right-1 left-1 top-1 border-2 border-black bg-black" />
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                  placeholder="Your email"
-                  className="w-full px-4 py-3 border-2 border-black relative bg-white text-base focus:outline-none focus:ring-0"
-                />
-              </div>
-              <p className="text-sm text-muted-foreground">
-                This email is used for notifications and login.
-              </p>
-            </div>
-
-            <div className="flex flex-row gap-4 pt-4">
-              <div className="relative inline-block">
-                <div className="absolute -bottom-1.5 -right-1.5 left-1.5 top-1.5 border-2 border-black bg-black" />
-                <button
-                  type="submit"
-                  disabled={isSaving}
-                  className="px-6 py-3 font-bold text-white border-2 border-black relative bg-[#10B981] disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSaving ? "Saving..." : "Update Profile"}
-                </button>
-              </div>
-            </div>
+            <Button type="submit" disabled={isSaving}>
+              {isSaving ? "Saving..." : "Update Profile"}
+            </Button>
           </div>
         </form>
       </Card>
 
-      {/* Logout Section */}
-      <Card className="w-full bg-white">
-        <div className="p-6">
-          <Text as="h3" className="text-xl mb-2">
-            Sign Out
-          </Text>
-          <Text className="text-muted-foreground text-sm mb-4">
-            Sign out of your account on this device.
-          </Text>
-          <div className="relative inline-block">
-            <div className="absolute -bottom-1.5 -right-1.5 left-1.5 top-1.5 border-2 border-black bg-black" />
-            <button
-              onClick={handleLogout}
-              className="px-6 py-3 font-bold text-white border-2 border-black relative bg-red-600 hover:bg-red-700"
-            >
-              Sign Out
-            </button>
-          </div>
-        </div>
-      </Card>
-
-      {/* Account Info */}
-      <Card className="w-full bg-white">
+      <Card className="w-full bg-white shadow-none">
         <div className="p-6">
           <Text as="h3" className="text-xl mb-4">
             Account Information
           </Text>
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2 text-sm mb-8">
             <div className="flex justify-between py-2 border-b">
               <span className="font-bold">Plan:</span>
-              <span className="px-2 py-0.5 bg-yellow-400 border border-black text-xs font-bold">
+              <span className="px-2 py-0.5 bg-primary border border-black text-xs font-bold">
                 {user.isPro ? "PRO" : "ESSENTIAL"}
               </span>
             </div>
@@ -177,6 +123,10 @@ export function ProfileSettings() {
               <span className="text-muted-foreground">{user.email}</span>
             </div>
           </div>
+
+          <Button onClick={handleLogout}>
+            Sign Out
+          </Button>
         </div>
       </Card>
     </div>

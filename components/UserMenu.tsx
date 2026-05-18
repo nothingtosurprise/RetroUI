@@ -6,7 +6,7 @@ import { User, LogOut, Building } from "lucide-react";
 import Avatar, { genConfig } from "react-nice-avatar";
 import { useAuth } from "@/contexts/AuthContext";
 import type { User as UserType } from "@/types/auth";
-import { Badge, Menu } from "./retroui";
+import { Badge, Button, Menu } from "./retroui";
 
 export default function UserMenu({ user }: { user: UserType }) {
   const { logout } = useAuth();
@@ -18,9 +18,9 @@ export default function UserMenu({ user }: { user: UserType }) {
   return (
     <Menu>
       <Menu.Trigger>
-        <button className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" aria-label="Open user menu">
+        <Button variant="ghost" size="icon" aria-label="Open user menu">
           <Avatar className="w-10 h-10 cursor-pointer border" {...genConfig(user?.email || "User")} />
-        </button>
+        </Button>
       </Menu.Trigger>
 
       <Menu.Content
@@ -65,13 +65,14 @@ export default function UserMenu({ user }: { user: UserType }) {
               </Menu.Item>
 
               <Menu.Item>
-                <button
+                <Button
+                  variant="ghost"
                   onClick={handleLogout}
-                  className="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-primary transition-colors duration-200 outline-none cursor-pointer text-destructive"
+                  className="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-primary transition-colors duration-200 text-destructive"
                 >
                   <LogOut className="w-4 h-4" />
                   <span>Logout</span>
-                </button>
+                </Button>
               </Menu.Item>
             </div>
           </div>
