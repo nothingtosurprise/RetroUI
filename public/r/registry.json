@@ -144,7 +144,7 @@
       "files": [
         {
           "path": "components/retroui/Accordion.tsx",
-          "target": "components/ui/Accordion.tsx",
+          "target": "components/retroui/Accordion.tsx",
           "type": "registry:component"
         }
       ]
@@ -235,7 +235,8 @@
       "title": "Base UI Calendar",
       "description": "Calendar component using Base UI.",
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react",
+        "react-day-picker"
       ],
       "files": [
         {
