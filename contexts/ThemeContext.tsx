@@ -22,10 +22,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [darkMode, setDarkModeState] = useState<DarkMode>("light");
   const [colorTheme, setColorThemeState] = useState<ColorTheme>(ColorTheme.Default);
   const [variant, setVariantState] = useState("box");
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const savedDarkMode = localStorage.getItem("darkMode") as DarkMode;
     const savedColorTheme = localStorage.getItem("colorTheme") as ColorTheme;
     const savedVariant = localStorage.getItem("variant") || "box";
@@ -79,10 +77,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setColorTheme,
     setVariant,
   };
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <ThemeContext.Provider value={value}>

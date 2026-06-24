@@ -1,29 +1,16 @@
 import { Card, Text } from "@/components/retroui";
+import { blogs } from "#site/content";
 import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
 
-type Post = {
-  id: number,
-  title: string,
-  slug: string,
-  publishedAt: string,
-  excerpt: string,
-  featuredImage: {
-    url: string,
-    alt: string
-  },
-}
-
-async function page() {
-  const res = await fetch("https://cms.retroui.dev/api/posts/published", {
-    method: 'GET',
-    credentials: 'include',
-    next: {
-      revalidate: 60,
-    },
-  })
-  const posts = await res.json()
+function page() {
+  const posts = blogs
+    .filter((blog) => blog.status === "published")
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+    );
 
   return (
     <div>
@@ -31,12 +18,12 @@ async function page() {
         All RetroUI Blogs
       </Text>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-        {posts.docs.map((blog: Post) => (
-          <Link href={`/blogs/${blog.slug}`} key={blog.id}>
+        {posts.map((blog) => (
+          <Link href={blog.url} key={blog.slug}>
             <Card className="shadow-none hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg">
               <Card.Header>
                 <Image
-                  src={`https://cms.retroui.dev${blog.featuredImage?.url}`}
+                  src={blog.coverImage}
                   alt={blog.title}
                   width={600}
                   height={400}
@@ -47,18 +34,8 @@ async function page() {
                 </Text>
                 <Card.Title className="line-clamp-2 text-2xl">{blog.title}</Card.Title>
 
-                <Card.Description className="line-clamp-2 text-sm">{blog.excerpt}</Card.Description>
+                <Card.Description className="line-clamp-2 text-sm">{blog.description}</Card.Description>
               </Card.Header>
-              {/* <Card.Content className="pt-0">
-
-                <div className="flex gap-2 items-center">
-                  <Avatar className="h-8 w-8 border">
-                    <Avatar.Image src="https://pub-5f7cbdfd9ffa4c838e386788f395f0c4.r2.dev/arif.jpg" alt="Arif Hossain" />
-                    <Avatar.Fallback>AH</Avatar.Fallback>
-                  </Avatar>
-                  <Text className="text-sm">Arif Hossain</Text>
-                </div>
-              </Card.Content> */}
             </Card>
           </Link>
         ))}
@@ -68,5 +45,3 @@ async function page() {
 }
 
 export default page;
-
-

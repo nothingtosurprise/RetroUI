@@ -4,45 +4,28 @@ import { Avatar, Badge, Button, Text } from "@/components/retroui";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { RichText } from "@payloadcms/richtext-lexical/react";
-import { JSXConverters } from "@/components/RichTextConverter";
+import { blogs } from "#site/content";
+import MDX from "@/components/MDX";
 
 interface IProps {
-  params: Promise<{ slug: string[] }>;
+  params: Promise<{ slug: string }>;
 }
 
-type Post = {
-  id: number,
-  title: string,
-  slug: string,
-  publishedAt: string,
-  content: any,
-  excerpt: string,
-  tags: {
-    name: string,
-    slug: string
-  }[],
-  featuredImage: {
-    url: string,
-    alt: string
-  },
+function getBlogBySlug(slug: string) {
+  return blogs.find(
+    (blog) => blog.slug === slug && blog.status === "published",
+  );
 }
 
-async function getBlogParams(params: { slug: string[] }) {
-  const res = await fetch(`https://cms.retroui.dev/api/posts/slug/${params.slug}`, {
-    method: 'GET',
-    credentials: 'include',
-    next: {
-      revalidate: 60,
-    },
-  })
-  const post = await res.json()
-  return post;
+export function generateStaticParams() {
+  return blogs
+    .filter((blog) => blog.status === "published")
+    .map((blog) => ({ slug: blog.slug }));
 }
 
 export async function generateMetadata(props: IProps): Promise<Metadata> {
   const params = await props.params;
-  const blog: Post = await getBlogParams(params);
+  const blog = getBlogBySlug(params.slug);
 
   if (!blog) {
     return {
@@ -52,23 +35,23 @@ export async function generateMetadata(props: IProps): Promise<Metadata> {
 
   return {
     title: `${blog.title} | RetroUI Blogs`,
-    description: blog.excerpt,
+    description: blog.description,
     alternates: {
       canonical: `https://www.retroui.dev/blogs/${blog.slug}`,
     },
     openGraph: {
       type: "article",
-      images: blog.featuredImage.url,
+      images: blog.coverImage,
       title: `${blog.title} | RetroUI Blogs`,
       publishedTime: blog.publishedAt,
-      authors: ["Arif Hossain"],
+      authors: [blog.author.name],
     },
   };
 }
 
 export default async function page(props: IProps) {
   const params = await props.params;
-  const blog: Post | null = await getBlogParams(params);
+  const blog = getBlogBySlug(params.slug);
 
   if (!blog) {
     return notFound();
@@ -83,17 +66,17 @@ export default async function page(props: IProps) {
           </Text>
           <Text>|</Text>
           <div className="flex items-center gap-3">
-            {blog.tags.map((tag) => (
+            {blog.tags.map((tag, index) => (
               <Badge
-                key={tag.slug}
+                key={tag}
                 size="sm"
                 variant="surface"
                 className={`bg-${["red", "green", "blue", "yellow", "purple", "pink"][
-                  blog.tags.indexOf(tag) % 6
+                  index % 6
                 ]
                   }-300`}
               >
-                {tag.name}
+                {tag}
               </Badge>
             ))}
           </div>
@@ -103,11 +86,11 @@ export default async function page(props: IProps) {
           {blog.title}
         </Text>
         <Text className="text-muted-foreground mb-12">
-          {blog.excerpt}
+          {blog.description}
         </Text>
         <Image
-          src={`https://cms.retroui.dev${blog.featuredImage.url}`}
-          alt={blog.featuredImage.alt}
+          src={blog.coverImage}
+          alt={blog.title}
           width={1200}
           height={800}
           className="mb-8"
@@ -115,18 +98,25 @@ export default async function page(props: IProps) {
         <div className="flex justify-between items-start">
           <div className="flex gap-4">
             <Avatar>
-              <Avatar.Image src="https://pub-5f7cbdfd9ffa4c838e386788f395f0c4.r2.dev/arif.jpg" alt="Arif Hossain" />
-              <Avatar.Fallback>AH</Avatar.Fallback>
+              <Avatar.Image src={blog.author.avatar} alt={blog.author.name} />
+              <Avatar.Fallback>
+                {blog.author.name
+                  .split(" ")
+                  .map((n) => n[0])
+                  .join("")}
+              </Avatar.Fallback>
             </Avatar>
             <div>
-              <Text as="h5">Arif Hossain</Text>
-              <Link
-                href={`https://x.com/@ariflogs`}
-                target="_blank"
-                className="text-muted-foreground"
-              >
-                @ariflogs
-              </Link>
+              <Text as="h5">{blog.author.name}</Text>
+              {blog.author.x && (
+                <Link
+                  href={`https://x.com/${blog.author.x}`}
+                  target="_blank"
+                  className="text-muted-foreground"
+                >
+                  @{blog.author.x}
+                </Link>
+              )}
             </div>
           </div>
 
@@ -140,10 +130,8 @@ export default async function page(props: IProps) {
           </Link>
         </div>
       </div>
-      <RichText
-        data={blog.content}
-        converters={JSXConverters}
-      />
+
+      <MDX code={blog.code} type="blog" />
 
       <hr className="my-12" />
 
